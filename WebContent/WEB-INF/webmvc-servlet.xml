@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<context:component-scan base-package="com.kfc.controller"></context:component-scan>
+
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:resources location="/" mapping="*.html"></mvc:resources>
+	<mvc:resources location="/common/" mapping="/common/*.html"></mvc:resources>
+	<mvc:resources location="/WEB-INF/main/" mapping="/main/*.html"></mvc:resources>
+	<mvc:resources location="/common/js/" mapping="/common/js/*.js"></mvc:resources>
+	<mvc:resources location="/common/css/" mapping="/common/css/**"></mvc:resources>
+	<mvc:resources location="/common/images/" mapping="/common/images/**"></mvc:resources>
+	<mvc:resources location="/common/svg/" mapping="/common/svg/**"></mvc:resources>
+	<mvc:resources location="/common/fonts/" mapping="/common/fonts/**"></mvc:resources>
+	<mvc:resources location="/log/" mapping="/log/**"></mvc:resources>
+	<mvc:resources location="/reg/" mapping="/reg/**"></mvc:resources>
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".html"></property>
+	</bean>
+
+
+</beans>

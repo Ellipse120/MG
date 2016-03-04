@@ -1,0 +1,1682 @@
+M.addGroup("fecore", {
+    "root": "fecore/",
+    "combine": true,
+    "modules": {
+        "e-baidumap": {
+            "requires": [
+                "mt-base",
+                "jsonp",
+                "array-extras"
+            ],
+            "path": "e-baidumap/e-baidumap-min.v29d38c03.js"
+        },
+        "e-googlemap": {
+            "requires": [
+                "mt-base",
+                "jsonp"
+            ],
+            "path": "e-googlemap/e-googlemap-min.v05d3d28a.js"
+        },
+        "e-map": {
+            "requires": [
+                "mt-base",
+                "e-googlemap",
+                "e-baidumap",
+                "e-sosomap",
+                "e-sosomap-v2"
+            ],
+            "path": "e-map/e-map-min.v8752bbd8.js"
+        },
+        "e-sosomap": {
+            "requires": [
+                "mt-base",
+                "node",
+                "oop",
+                "event-custom"
+            ],
+            "skinnable": true,
+            "path": "e-sosomap/e-sosomap-min.v3d067be3.js"
+        },
+        "e-sosomap-v2": {
+            "requires": [
+                "mt-base",
+                "node",
+                "oop",
+                "event-custom"
+            ],
+            "skinnable": true,
+            "path": "e-sosomap-v2/e-sosomap-v2-min.vd92886e4.js"
+        },
+        "e-table": {
+            "requires": [
+                "mt-base",
+                "io-base",
+                "w-paginator",
+                "node",
+                "oop",
+                "event-custom"
+            ],
+            "path": "e-table/e-table-min.vfed5db3e.js"
+        },
+        "e-validator": {
+            "requires": [
+                "mt-base",
+                "base",
+                "node",
+                "mt-form",
+                "e-validator/method",
+                "e-validator/rules"
+            ],
+            "path": "e-validator/e-validator-min.v7a1b5eb5.js"
+        },
+        "e-validator/method": {
+            "requires": [],
+            "path": "e-validator/method-min.ve777f5b2.js"
+        },
+        "e-validator/rules": {
+            "requires": [],
+            "path": "e-validator/rules-min.vbf73e5fe.js"
+        },
+        "mt-ajax": {
+            "requires": [
+                "io-base",
+                "mt-window",
+                "mt-event",
+                "mt-base"
+            ],
+            "path": "mt-ajax/mt-ajax-min.vba8e887f.js"
+        },
+        "mt-autoinit": {
+            "requires": [
+                "yui-base"
+            ],
+            "path": "mt-autoinit/mt-autoinit-min.v8c4b64e2.js"
+        },
+        "mt-base": {
+            "requires": [
+                "node",
+                "event",
+                "json"
+            ],
+            "path": "mt-base/mt-base-min.vf9547e53.js"
+        },
+        "mt-beacon": {
+            "requires": [
+                "querystring-stringify-simple",
+                "mt-base",
+                "mt-xsstorage"
+            ],
+            "path": "mt-beacon/mt-beacon-min.v71b6966e.js"
+        },
+        "mt-bigrender": {
+            "requires": [
+                "mt-viewporttracker"
+            ],
+            "path": "mt-bigrender/mt-bigrender-min.v62f48709.js"
+        },
+        "mt-bind": {
+            "requires": [
+                "mt-base",
+                "mt-scope",
+                "mt-validator",
+                "mt-ngparser",
+                "mt-autoinit"
+            ],
+            "path": "mt-bind/mt-bind-min.vcd592f6d.js"
+        },
+        "mt-clonenode": {
+            "requires": [
+                "node"
+            ],
+            "path": "mt-clonenode/mt-clonenode-min.v5e993943.js"
+        },
+        "mt-component": {
+            "requires": [
+                "mt-base",
+                "mt-event",
+                "node",
+                "promise",
+                "mt-bind"
+            ],
+            "path": "mt-component/mt-component-min.ve3345f6f.js"
+        },
+        "mt-cookie": {
+            "requires": [
+                "mt-base"
+            ],
+            "path": "mt-cookie/mt-cookie-min.v6eaadab4.js"
+        },
+        "mt-countdown": {
+            "requires": [
+                "mt-base",
+                "node"
+            ],
+            "path": "mt-countdown/mt-countdown-min.v73fe6ca0.js"
+        },
+        "mt-date": {
+            "requires": [
+                "mt-base",
+                "node"
+            ],
+            "path": "mt-date/mt-date-min.v4aeda0d6.js"
+        },
+        "mt-dialog": {
+            "requires": [
+                "mt-base",
+                "overlay",
+                "node",
+                "base",
+                "mt-uiutil"
+            ],
+            "path": "mt-dialog/mt-dialog-min.v84556fa8.js"
+        },
+        "mt-event": {
+            "requires": [
+                "event"
+            ],
+            "path": "mt-event/mt-event-min.v42245138.js"
+        },
+        "mt-event-hover": {
+            "requires": [
+                "promise",
+                "event"
+            ],
+            "path": "mt-event-hover/mt-event-hover-min.v453b1323.js"
+        },
+        "mt-flux": {
+            "requires": [
+                "mt-base",
+                "mt-type"
+            ],
+            "path": "mt-flux/mt-flux-min.v815b393c.js"
+        },
+        "mt-form": {
+            "requires": [
+                "mt-base",
+                "io-base",
+                "node"
+            ],
+            "path": "mt-form/mt-form-min.vecbda950.js"
+        },
+        "mt-form-factory": {
+            "requires": [
+                "mt-base",
+                "io-form",
+                "querystring-parse"
+            ],
+            "path": "mt-form-factory/mt-form-factory-min.v6eeb2a52.js"
+        },
+        "mt-formchecker": {
+            "requires": [
+                "mt-base",
+                "io-base",
+                "base-base",
+                "node"
+            ],
+            "path": "mt-formchecker/mt-formchecker-min.v9bb6e6f1.js"
+        },
+        "mt-hub": {
+            "requires": [
+                "node",
+                "event",
+                "event-custom",
+                "io-base",
+                "promise"
+            ],
+            "path": "mt-hub/mt-hub-min.v7df037ae.js"
+        },
+        "mt-imageloader": {
+            "requires": [
+                "mt-viewporttracker"
+            ],
+            "path": "mt-imageloader/mt-imageloader-min.vfe7667b5.js"
+        },
+        "mt-io": {
+            "requires": [
+                "mt-base",
+                "io-base",
+                "io-form",
+                "json",
+                "node"
+            ],
+            "path": "mt-io/mt-io-min.v21038cb3.js"
+        },
+        "mt-lazyloader": {
+            "requires": [
+                "mt-base",
+                "base-base",
+                "node"
+            ],
+            "path": "mt-lazyloader/mt-lazyloader-min.v0303c706.js"
+        },
+        "mt-log": {
+            "requires": [
+                "node",
+                "yui-throttle",
+                "mt-beacon"
+            ],
+            "path": "mt-log/mt-log-min.vd5b81910.js"
+        },
+        "mt-map": {
+            "requires": [
+                "mt-base",
+                "base-base",
+                "node"
+            ],
+            "path": "mt-map/mt-map-min.va998570b.js"
+        },
+        "mt-mobilebinder": {
+            "requires": [
+                "mt-base",
+                "io-base",
+                "base-base",
+                "node"
+            ],
+            "path": "mt-mobilebinder/mt-mobilebinder-min.v3de84529.js"
+        },
+        "mt-ngparser": {
+            "requires": [],
+            "path": "mt-ngparser/mt-ngparser-min.vd6767290.js"
+        },
+        "mt-node-ops": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "mt-form",
+                "p-node-effect",
+                "mt-clonenode",
+                "node"
+            ],
+            "path": "mt-node-ops/mt-node-ops-min.v49fc6a38.js"
+        },
+        "mt-parser": {
+            "requires": [],
+            "path": "mt-parser/mt-parser-min.vbf27ed52.js"
+        },
+        "mt-pinyin": {
+            "requires": [
+                "mt-pinyin-db"
+            ],
+            "path": "mt-pinyin/mt-pinyin-min.v075c6942.js"
+        },
+        "mt-pinyin-db": {
+            "requires": [],
+            "path": "mt-pinyin-db/mt-pinyin-db-min.ve80cefd1.js"
+        },
+        "mt-scope": {
+            "requires": [
+                "mt-base",
+                "mt-ngparser"
+            ],
+            "path": "mt-scope/mt-scope-min.vc294908e.js"
+        },
+        "mt-scrollloader": {
+            "requires": [
+                "io-base",
+                "mt-base"
+            ],
+            "path": "mt-scrollloader/mt-scrollloader-min.v99cd98c9.js"
+        },
+        "mt-selection": {
+            "requires": [
+                "mt-base",
+                "node"
+            ],
+            "path": "mt-selection/mt-selection-min.v3dda626b.js"
+        },
+        "mt-swf-uploader": {
+            "requires": [
+                "swf",
+                "base",
+                "node",
+                "event-custom",
+                "oop"
+            ],
+            "path": "mt-swf-uploader/mt-swf-uploader-min.vc9dcf701.js"
+        },
+        "mt-thirdtool": {
+            "requires": [],
+            "path": "mt-thirdtool/mt-thirdtool-min.v554c8b5d.js"
+        },
+        "mt-tracker": {
+            "requires": [
+                "node",
+                "event",
+                "mt-beacon"
+            ],
+            "path": "mt-tracker/mt-tracker-min.vc784827f.js"
+        },
+        "mt-type": {
+            "requires": [
+                "mt-base"
+            ],
+            "path": "mt-type/mt-type-min.vde85c514.js"
+        },
+        "mt-uiutil": {
+            "requires": [
+                "mt-base",
+                "node",
+                "dom"
+            ],
+            "path": "mt-uiutil/mt-uiutil-min.v3ee76d1b.js"
+        },
+        "mt-validator": {
+            "requires": [
+                "mt-base"
+            ],
+            "path": "mt-validator/mt-validator-min.vd2158b55.js"
+        },
+        "mt-vendor/zeroclipboard": {
+            "requires": [],
+            "path": "mt-vendor/zeroclipboard-min.ve924c29f.js"
+        },
+        "mt-viewporttracker": {
+            "requires": [
+                "mt-window",
+                "base-base",
+                "node"
+            ],
+            "path": "mt-viewporttracker/mt-viewporttracker-min.vae8a3ff1.js"
+        },
+        "mt-widget": {
+            "requires": [
+                "mt-widget/e-classname",
+                "mt-widget/e-event",
+                "mt-widget/e-datasource",
+                "mt-widget/e-elements",
+                "widget",
+                "base-build"
+            ],
+            "path": "mt-widget/mt-widget-min.v38b65569.js"
+        },
+        "mt-widget/e-classname": {
+            "requires": [],
+            "path": "mt-widget/e-classname-min.v73db21d4.js"
+        },
+        "mt-widget/e-datasource": {
+            "requires": [
+                "io",
+                "json",
+                "event-custom"
+            ],
+            "path": "mt-widget/e-datasource-min.v9903c315.js"
+        },
+        "mt-widget/e-elements": {
+            "requires": [
+                "node"
+            ],
+            "path": "mt-widget/e-elements-min.v012eb146.js"
+        },
+        "mt-widget/e-event": {
+            "requires": [
+                "node"
+            ],
+            "path": "mt-widget/e-event-min.v630f1777.js"
+        },
+        "mt-window": {
+            "requires": [],
+            "path": "mt-window/mt-window-min.v1e88af0c.js"
+        },
+        "mt-xsstorage": {
+            "requires": [
+                "mt-base"
+            ],
+            "path": "mt-xsstorage/mt-xsstorage-min.ve39b55b3.js"
+        },
+        "p-align": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "plugin",
+                "node"
+            ],
+            "path": "p-align/p-align-min.v2b1aa686.js"
+        },
+        "p-mask": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "plugin",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "p-mask/p-mask-min.v8bca600e.js"
+        },
+        "p-node-effect": {
+            "requires": [
+                "mt-base",
+                "mt-uiutil",
+                "anim",
+                "plugin",
+                "node"
+            ],
+            "path": "p-node-effect/p-node-effect-min.va5d2a9e5.js"
+        },
+        "p-node-placeholder": {
+            "requires": [
+                "mt-base",
+                "plugin"
+            ],
+            "path": "p-node-placeholder/p-node-placeholder-min.v6107f6dc.js"
+        },
+        "p-node-rotate": {
+            "requires": [
+                "node",
+                "base",
+                "transition",
+                "oop",
+                "attribute"
+            ],
+            "path": "p-node-rotate/p-node-rotate-min.v9adfcbb3.js"
+        },
+        "p-node-sticky": {
+            "requires": [
+                "mt-base",
+                "plugin",
+                "node"
+            ],
+            "path": "p-node-sticky/p-node-sticky-min.v06371ad4.js"
+        },
+        "p-node-wordcounter": {
+            "requires": [
+                "mt-base",
+                "plugin",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "p-node-wordcounter/p-node-wordcounter-min.v0e26d962.js"
+        },
+        "p-timer-button": {
+            "requires": [
+                "mt-base",
+                "plugin",
+                "io"
+            ],
+            "path": "p-timer-button/p-timer-button-min.v5b549c8f.js"
+        },
+        "p-toolbar": {
+            "requires": [
+                "mt-base",
+                "w-base",
+                "plugin",
+                "w-dialog",
+                "mt-io",
+                "w-dynamic-form",
+                "node",
+                "dd",
+                "oop",
+                "json",
+                "event-custom"
+            ],
+            "path": "p-toolbar/p-toolbar-min.v2f20e44b.js"
+        },
+        "p-uploader-form": {
+            "requires": [
+                "mt-base",
+                "io-base",
+                "io-form",
+                "base-build",
+                "plugin",
+                "node",
+                "mt-form",
+                "w-base"
+            ],
+            "path": "p-uploader-form/p-uploader-form-min.vc5fca79c.js"
+        },
+        "skin-sam-e-sosomap": {
+            "type": "css",
+            "requires": [],
+            "path": "e-sosomap/assets/skins/sam/e-sosomap.vd36912b1.css"
+        },
+        "skin-sam-e-sosomap-v2": {
+            "type": "css",
+            "requires": [],
+            "path": "e-sosomap-v2/assets/skins/sam/e-sosomap-v2.vd36912b1.css"
+        },
+        "skin-sam-p-mask": {
+            "type": "css",
+            "requires": [],
+            "path": "p-mask/assets/skins/sam/p-mask.v0a54586e.css"
+        },
+        "skin-sam-p-node-wordcounter": {
+            "type": "css",
+            "requires": [],
+            "path": "p-node-wordcounter/assets/skins/sam/p-node-wordcounter.v4fe176e2.css"
+        },
+        "skin-sam-w-autocomplete": {
+            "type": "css",
+            "requires": [],
+            "path": "w-autocomplete/assets/skins/sam/w-autocomplete.v2ceb2217.css"
+        },
+        "skin-sam-w-base": {
+            "type": "css",
+            "requires": [],
+            "path": "w-base/assets/skins/sam/w-base.vaddfbbff.css"
+        },
+        "skin-sam-w-bubbletip": {
+            "type": "css",
+            "requires": [],
+            "path": "w-bubbletip/assets/skins/sam/w-bubbletip.vbb4eb35a.css"
+        },
+        "skin-sam-w-carousel": {
+            "type": "css",
+            "requires": [],
+            "path": "w-carousel/assets/skins/sam/w-carousel.vb6b2bad8.css"
+        },
+        "skin-sam-w-carousel-base": {
+            "type": "css",
+            "requires": [],
+            "path": "w-carousel-base/assets/skins/sam/w-carousel-base.v13f59273.css"
+        },
+        "skin-sam-w-colorpicker": {
+            "type": "css",
+            "requires": [],
+            "path": "w-colorpicker/assets/skins/sam/w-colorpicker.v70adcb7b.css"
+        },
+        "skin-sam-w-date": {
+            "type": "css",
+            "requires": [],
+            "path": "w-date/assets/skins/sam/w-date.v4d32957c.css"
+        },
+        "skin-sam-w-dialog": {
+            "type": "css",
+            "requires": [],
+            "path": "w-dialog/assets/skins/sam/w-dialog.veb925983.css"
+        },
+        "skin-sam-w-dynamic-form": {
+            "type": "css",
+            "requires": [],
+            "path": "w-dynamic-form/assets/skins/sam/w-dynamic-form.v71cd05cb.css"
+        },
+        "skin-sam-w-fixed-table": {
+            "type": "css",
+            "requires": [],
+            "path": "w-fixed-table/assets/skins/sam/w-fixed-table.vdba1dc7d.css"
+        },
+        "skin-sam-w-form-validate": {
+            "type": "css",
+            "requires": [],
+            "path": "w-form-validate/assets/skins/sam/w-form-validate.vb5f7f9a3.css"
+        },
+        "skin-sam-w-guide": {
+            "type": "css",
+            "requires": [],
+            "path": "w-guide/assets/skins/sam/w-guide.v1379b1ed.css"
+        },
+        "skin-sam-w-hovermark": {
+            "type": "css",
+            "requires": [],
+            "path": "w-hovermark/assets/skins/sam/w-hovermark.v9edbe0a8.css"
+        },
+        "skin-sam-w-image": {
+            "type": "css",
+            "requires": [],
+            "path": "w-image/assets/skins/sam/w-image.vdd6663ea.css"
+        },
+        "skin-sam-w-image-cropper": {
+            "type": "css",
+            "requires": [],
+            "path": "w-image-cropper/assets/skins/sam/w-image-cropper.vdece7014.css"
+        },
+        "skin-sam-w-livesearch": {
+            "type": "css",
+            "requires": [],
+            "path": "w-livesearch/assets/skins/sam/w-livesearch.vd6d74e7a.css"
+        },
+        "skin-sam-w-mapeditor": {
+            "type": "css",
+            "requires": [],
+            "path": "w-mapeditor/assets/skins/sam/w-mapeditor.va1a9b8b8.css"
+        },
+        "skin-sam-w-mapview": {
+            "type": "css",
+            "requires": [],
+            "path": "w-mapview/assets/skins/sam/w-mapview.vb289e24a.css"
+        },
+        "skin-sam-w-msgtip": {
+            "type": "css",
+            "requires": [],
+            "path": "w-msgtip/assets/skins/sam/w-msgtip.vf81d31c4.css"
+        },
+        "skin-sam-w-multiselect": {
+            "type": "css",
+            "requires": [],
+            "path": "w-multiselect/assets/skins/sam/w-multiselect.ve091ce25.css"
+        },
+        "skin-sam-w-paginator": {
+            "type": "css",
+            "requires": [],
+            "path": "w-paginator/assets/skins/sam/w-paginator.ved18592c.css"
+        },
+        "skin-sam-w-rating": {
+            "type": "css",
+            "requires": [],
+            "path": "w-rating/assets/skins/sam/w-rating.v5cb83eba.css"
+        },
+        "skin-sam-w-realtime-editor": {
+            "type": "css",
+            "requires": [],
+            "path": "w-realtime-editor/assets/skins/sam/w-realtime-editor.vd924351f.css"
+        },
+        "skin-sam-w-simpledialog": {
+            "type": "css",
+            "requires": [],
+            "path": "w-simpledialog/assets/skins/sam/w-simpledialog.vfee8d0c4.css"
+        },
+        "skin-sam-w-slider": {
+            "type": "css",
+            "requires": [],
+            "path": "w-slider/assets/skins/sam/w-slider.v9283e3b1.css"
+        },
+        "skin-sam-w-tab": {
+            "type": "css",
+            "requires": [],
+            "path": "w-tab/assets/skins/sam/w-tab.vf4c2faf9.css"
+        },
+        "skin-sam-w-table": {
+            "type": "css",
+            "requires": [],
+            "path": "w-table/assets/skins/sam/w-table.v8dd03c0e.css"
+        },
+        "skin-sam-w-table-editable": {
+            "type": "css",
+            "requires": [],
+            "path": "w-table-editable/assets/skins/sam/w-table-editable.vb89389ff.css"
+        },
+        "skin-sam-w-tree-base": {
+            "type": "css",
+            "requires": [],
+            "path": "w-tree-base/assets/skins/sam/w-tree-base.ve48bafb0.css"
+        },
+        "skin-sam-w-uploader": {
+            "type": "css",
+            "requires": [],
+            "path": "w-uploader/assets/skins/sam/w-uploader.v303ca2df.css"
+        },
+        "skin-uiguide-w-date": {
+            "type": "css",
+            "requires": [],
+            "path": "w-date/assets/skins/uiguide/w-date.vb991baf6.css"
+        },
+        "uix-collapse": {
+            "requires": [
+                "mt-base",
+                "node"
+            ],
+            "path": "uix-collapse/uix-collapse-min.vc267d1b6.js"
+        },
+        "uix-dropdown": {
+            "requires": [
+                "mt-event-hover",
+                "mt-base"
+            ],
+            "path": "uix-dropdown/uix-dropdown-min.v06c153d5.js"
+        },
+        "uix-scrollspy": {
+            "requires": [
+                "mt-base",
+                "node"
+            ],
+            "path": "uix-scrollspy/uix-scrollspy-min.v456d56b7.js"
+        },
+        "uix-smoothscroll": {
+            "requires": [
+                "mt-base",
+                "anim",
+                "node"
+            ],
+            "path": "uix-smoothscroll/uix-smoothscroll-min.vf2bce5f4.js"
+        },
+        "uix-sticky": {
+            "requires": [
+                "mt-base",
+                "mt-uiutil",
+                "node"
+            ],
+            "path": "uix-sticky/uix-sticky-min.v88a50d15.js"
+        },
+        "uix-tabview": {
+            "requires": [
+                "mt-base",
+                "node"
+            ],
+            "path": "uix-tabview/uix-tabview-min.vb98f0cac.js"
+        },
+        "uix-tooltip": {
+            "requires": [
+                "mt-base",
+                "node",
+                "mt-uiutil"
+            ],
+            "path": "uix-tooltip/uix-tooltip-min.v1388ff1d.js"
+        },
+        "w-autocomplete": {
+            "requires": [
+                "mt-base",
+                "mt-pinyin",
+                "mt-io",
+                "w-core",
+                "base-build",
+                "widget",
+                "widget-position",
+                "widget-position-align",
+                "widget-stack",
+                "p-node-placeholder",
+                "w-autocomplete/p-cascade",
+                "w-autocomplete/p-asyncsearch",
+                "node",
+                "io",
+                "event-valuechange"
+            ],
+            "skinnable": true,
+            "path": "w-autocomplete/w-autocomplete-min.v90245fc9.js"
+        },
+        "w-autocomplete/p-asyncsearch": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "plugin",
+                "w-autocomplete"
+            ],
+            "path": "w-autocomplete/p-asyncsearch-min.v7987311f.js"
+        },
+        "w-autocomplete/p-cascade": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "plugin",
+                "w-autocomplete"
+            ],
+            "path": "w-autocomplete/p-cascade-min.vbd130002.js"
+        },
+        "w-base": {
+            "requires": [
+                "mt-base",
+                "mt-io",
+                "mt-form",
+                "datatype-number",
+                "w-core",
+                "w-select-cascade",
+                "io",
+                "node",
+                "p-mask",
+                "dd",
+                "oop",
+                "event-custom"
+            ],
+            "skinnable": true,
+            "path": "w-base/w-base-min.vb8b7d78f.js"
+        },
+        "w-bubbletip": {
+            "requires": [
+                "mt-base",
+                "anim",
+                "overlay",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-bubbletip/w-bubbletip-min.v67d96f15.js"
+        },
+        "w-calendar": {
+            "requires": [
+                "mt-base",
+                "widget",
+                "mt-date",
+                "node"
+            ],
+            "path": "w-calendar/w-calendar-min.va4234114.js"
+        },
+        "w-carousel": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "widget",
+                "anim"
+            ],
+            "skinnable": true,
+            "path": "w-carousel/w-carousel-min.v244eaf92.js"
+        },
+        "w-carousel-base": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "widget",
+                "anim"
+            ],
+            "skinnable": true,
+            "path": "w-carousel-base/w-carousel-base-min.v80900138.js"
+        },
+        "w-colorpicker": {
+            "requires": [
+                "mt-base",
+                "widget",
+                "event-outside",
+                "node",
+                "event-custom"
+            ],
+            "skinnable": true,
+            "path": "w-colorpicker/w-colorpicker-min.v39ef6516.js"
+        },
+        "w-core": {
+            "requires": [
+                "mt-base",
+                "escape",
+                "node",
+                "event-custom"
+            ],
+            "path": "w-core/w-core-min.v88c1ef2c.js"
+        },
+        "w-date": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "widget",
+                "mt-date",
+                "w-date-base",
+                "w-core",
+                "node",
+                "oop"
+            ],
+            "skinnable": true,
+            "path": "w-date/w-date-min.v916beb8e.js"
+        },
+        "w-date-base": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "widget",
+                "mt-date",
+                "node"
+            ],
+            "path": "w-date-base/w-date-base-min.v59434d58.js"
+        },
+        "w-dialog": {
+            "requires": [
+                "base-build",
+                "widget",
+                "widget-stdmod",
+                "widget-position",
+                "widget-position-align",
+                "widget-modality",
+                "widget-stack",
+                "widget-autohide",
+                "w-dialog/e-dialog-showon",
+                "w-dialog/e-dialog-iframe",
+                "w-dialog/e-dialog-autoalign",
+                "node",
+                "dd"
+            ],
+            "skinnable": true,
+            "path": "w-dialog/w-dialog-min.va2283019.js"
+        },
+        "w-dialog/e-dialog-autoalign": {
+            "requires": [
+                "yui-throttle",
+                "widget",
+                "node",
+                "dom",
+                "event-custom"
+            ],
+            "path": "w-dialog/e-dialog-autoalign-min.v4935e639.js"
+        },
+        "w-dialog/e-dialog-iframe": {
+            "requires": [
+                "widget",
+                "node",
+                "event-custom"
+            ],
+            "path": "w-dialog/e-dialog-iframe-min.v61028abf.js"
+        },
+        "w-dialog/e-dialog-modalshim": {
+            "requires": [
+                "widget",
+                "widget-modality",
+                "node",
+                "event-custom"
+            ],
+            "path": "w-dialog/e-dialog-modalshim-min.v66da49b9.js"
+        },
+        "w-dialog/e-dialog-showon": {
+            "requires": [
+                "widget",
+                "oop",
+                "event-custom"
+            ],
+            "path": "w-dialog/e-dialog-showon-min.vfb9e6fca.js"
+        },
+        "w-dialog/e-widget-fullscreen": {
+            "requires": [
+                "widget",
+                "dom",
+                "node",
+                "event-custom"
+            ],
+            "path": "w-dialog/e-widget-fullscreen-min.va40e2fc6.js"
+        },
+        "w-dynamic-form": {
+            "requires": [
+                "mt-base",
+                "mt-form",
+                "w-form-validate",
+                "w-tab",
+                "w-date",
+                "escape",
+                "widget",
+                "node",
+                "json",
+                "io"
+            ],
+            "skinnable": true,
+            "path": "w-dynamic-form/w-dynamic-form-min.vf68cb104.js"
+        },
+        "w-fixed-table": {
+            "requires": [
+                "mt-base",
+                "base-base",
+                "collection",
+                "async-queue",
+                "transition",
+                "node",
+                "oop",
+                "w-table",
+                "e-table"
+            ],
+            "skinnable": true,
+            "path": "w-fixed-table/w-fixed-table-min.veef3d429.js"
+        },
+        "w-fixedbar": {
+            "requires": [
+                "mt-base",
+                "mt-uiutil",
+                "widget",
+                "node"
+            ],
+            "path": "w-fixedbar/w-fixedbar-min.v5662168f.js"
+        },
+        "w-flashcopy": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "widget",
+                "mt-vendor/zeroclipboard",
+                "node"
+            ],
+            "path": "w-flashcopy/w-flashcopy-min.vff16ac13.js"
+        },
+        "w-form-validate": {
+            "requires": [
+                "w-core",
+                "mt-base",
+                "w-bubbletip",
+                "w-validate-base"
+            ],
+            "skinnable": true,
+            "path": "w-form-validate/w-form-validate-min.v4800d15d.js"
+        },
+        "w-forminfo": {
+            "requires": [
+                "mt-base",
+                "w-base",
+                "base-build",
+                "widget",
+                "node",
+                "mt-form"
+            ],
+            "path": "w-forminfo/w-forminfo-min.va231904d.js"
+        },
+        "w-guide": {
+            "requires": [
+                "mt-base",
+                "widget",
+                "node",
+                "anim",
+                "dom"
+            ],
+            "skinnable": true,
+            "path": "w-guide/w-guide-min.v283c93f2.js"
+        },
+        "w-hovermark": {
+            "requires": [
+                "mt-base",
+                "anim",
+                "widget",
+                "transition",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-hovermark/w-hovermark-min.vb23bcec7.js"
+        },
+        "w-html-checker": {
+            "requires": [
+                "array-extras",
+                "oop"
+            ],
+            "path": "w-html-checker/w-html-checker-min.v27572314.js"
+        },
+        "w-image": {
+            "requires": [
+                "base-base",
+                "arraylist",
+                "w-image-dialog",
+                "event-key",
+                "node",
+                "oop",
+                "collection",
+                "widget"
+            ],
+            "skinnable": true,
+            "path": "w-image/w-image-min.vd94a655c.js"
+        },
+        "w-image-cropper": {
+            "requires": [
+                "mt-base",
+                "widget",
+                "dd-drag",
+                "dd-constrain",
+                "resize"
+            ],
+            "skinnable": true,
+            "path": "w-image-cropper/w-image-cropper-min.vf7e5777c.js"
+        },
+        "w-image-dialog": {
+            "requires": [
+                "w-dialog",
+                "w-dialog/e-widget-fullscreen",
+                "collection",
+                "slider",
+                "p-node-rotate",
+                "transition",
+                "event-mousewheel",
+                "dd-plugin",
+                "resize-plugin",
+                "resize-constrain",
+                "dd-constrain",
+                "base",
+                "widget-position-constrain",
+                "widget-stdmod",
+                "node",
+                "oop",
+                "event-custom",
+                "widget"
+            ],
+            "path": "w-image-dialog/w-image-dialog-min.v8d2162a1.js"
+        },
+        "w-livesearch": {
+            "requires": [
+                "mt-base",
+                "w-core",
+                "io-base",
+                "base-build",
+                "widget",
+                "widget-position",
+                "widget-stack",
+                "node",
+                "mt-form"
+            ],
+            "skinnable": true,
+            "path": "w-livesearch/w-livesearch-min.vbc01d086.js"
+        },
+        "w-mapeditor": {
+            "requires": [
+                "w-base",
+                "base-build",
+                "widget",
+                "w-bubbletip",
+                "p-mask",
+                "e-map",
+                "w-mapeditor/e-mapbase",
+                "mt-base",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-mapeditor/w-mapeditor-min.v89c30a55.js"
+        },
+        "w-mapeditor/e-mapbase": {
+            "requires": [
+                "mt-base",
+                "e-map"
+            ],
+            "path": "w-mapeditor/e-mapbase-min.vb920f59e.js"
+        },
+        "w-mapview": {
+            "requires": [
+                "mt-base",
+                "w-core",
+                "base-build",
+                "widget",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-mapview/w-mapview-min.vf5d75fe7.js"
+        },
+        "w-msgtip": {
+            "requires": [
+                "mt-base",
+                "w-core",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-msgtip/w-msgtip-min.v7fa0befc.js"
+        },
+        "w-multiselect": {
+            "requires": [
+                "mt-base",
+                "w-core",
+                "mt-pinyin",
+                "base-build",
+                "widget",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-multiselect/w-multiselect-min.v67257744.js"
+        },
+        "w-paginator": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "widget",
+                "node",
+                "oop",
+                "mt-form"
+            ],
+            "skinnable": true,
+            "path": "w-paginator/w-paginator-min.v704f68d6.js"
+        },
+        "w-rating": {
+            "requires": [
+                "mt-base",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-rating/w-rating-min.v73803c47.js"
+        },
+        "w-realtime-editor": {
+            "requires": [
+                "io-base",
+                "widget",
+                "node",
+                "mt-base"
+            ],
+            "skinnable": true,
+            "path": "w-realtime-editor/w-realtime-editor-min.v7ac4452f.js"
+        },
+        "w-select-cascade": {
+            "requires": [
+                "mt-base",
+                "io-base",
+                "node"
+            ],
+            "path": "w-select-cascade/w-select-cascade-min.vf47f7dc6.js"
+        },
+        "w-simpledialog": {
+            "requires": [
+                "mt-base",
+                "w-core",
+                "p-align",
+                "widget",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-simpledialog/w-simpledialog-min.vff2e9222.js"
+        },
+        "w-slider": {
+            "requires": [
+                "mt-base",
+                "anim",
+                "widget",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-slider/w-slider-min.vfdc407dc.js"
+        },
+        "w-tab": {
+            "requires": [
+                "mt-base",
+                "anim",
+                "base-build",
+                "widget",
+                "node",
+                "event-custom"
+            ],
+            "skinnable": true,
+            "path": "w-tab/w-tab-min.v42e1f75b.js"
+        },
+        "w-table": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "widget",
+                "w-table/p-table",
+                "e-table",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-table/w-table-min.v309e8027.js"
+        },
+        "w-table-editable": {
+            "requires": [
+                "mt-base",
+                "mt-form",
+                "base",
+                "widget",
+                "e-validator",
+                "mt-widget/e-classname",
+                "w-table-editable/validate",
+                "w-table-editable/e-toolbar",
+                "node",
+                "w-base",
+                "json"
+            ],
+            "skinnable": true,
+            "path": "w-table-editable/w-table-editable-min.vc5678c8a.js"
+        },
+        "w-table-editable/e-toolbar": {
+            "requires": [
+                "node",
+                "widget",
+                "mt-node-ops"
+            ],
+            "path": "w-table-editable/e-toolbar-min.v9abfe787.js"
+        },
+        "w-table-editable/validate": {
+            "requires": [
+                "node",
+                "w-form-validate"
+            ],
+            "path": "w-table-editable/validate-min.va63040d9.js"
+        },
+        "w-table/p-paginator": {
+            "requires": [
+                "mt-base",
+                "w-base",
+                "w-paginator",
+                "plugin",
+                "node"
+            ],
+            "path": "w-table/p-paginator-min.vef69ccfe.js"
+        },
+        "w-table/p-sort": {
+            "requires": [
+                "mt-base",
+                "w-base",
+                "plugin",
+                "w-table",
+                "node"
+            ],
+            "path": "w-table/p-sort-min.va3bdc3ed.js"
+        },
+        "w-table/p-table": {
+            "requires": [
+                "mt-base",
+                "w-base",
+                "plugin",
+                "w-dynamic-form",
+                "json",
+                "node"
+            ],
+            "path": "w-table/p-table-min.vb1f4ecff.js"
+        },
+        "w-tree": {
+            "requires": [
+                "mt-io",
+                "w-tree-base",
+                "w-tree/p-checkbox",
+                "w-tree/p-search",
+                "w-tree/p-searchasync",
+                "w-tree/p-levelasync",
+                "w-tree/p-edit",
+                "node"
+            ],
+            "path": "w-tree/w-tree-min.vee312ab9.js"
+        },
+        "w-tree-base": {
+            "requires": [
+                "mt-base",
+                "mt-io",
+                "w-base",
+                "w-core",
+                "base-build",
+                "widget",
+                "oop",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-tree-base/w-tree-base-min.va8def35f.js"
+        },
+        "w-tree/p-checkbox": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "plugin",
+                "w-tree",
+                "node",
+                "w-tree-base"
+            ],
+            "path": "w-tree/p-checkbox-min.v609ef761.js"
+        },
+        "w-tree/p-edit": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "plugin",
+                "w-tree-base"
+            ],
+            "path": "w-tree/p-edit-min.vcc8c73b0.js"
+        },
+        "w-tree/p-levelasync": {
+            "requires": [
+                "mt-base",
+                "mt-io",
+                "base-build",
+                "plugin",
+                "w-tree",
+                "w-tree-base",
+                "oop",
+                "json",
+                "io"
+            ],
+            "path": "w-tree/p-levelasync-min.v872be8d4.js"
+        },
+        "w-tree/p-search": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "plugin",
+                "w-core",
+                "mt-pinyin",
+                "p-node-placeholder",
+                "w-tree",
+                "node"
+            ],
+            "path": "w-tree/p-search-min.vb0c759d4.js"
+        },
+        "w-tree/p-searchasync": {
+            "requires": [
+                "mt-base",
+                "base-build",
+                "plugin",
+                "w-core",
+                "p-node-placeholder",
+                "w-tree",
+                "mt-io"
+            ],
+            "path": "w-tree/p-searchasync-min.v022f9528.js"
+        },
+        "w-uploader": {
+            "requires": [
+                "mt-base",
+                "mt-uiutil",
+                "base-build",
+                "widget",
+                "mt-swf-uploader",
+                "mt-form",
+                "p-mask",
+                "node"
+            ],
+            "skinnable": true,
+            "path": "w-uploader/w-uploader-min.v21994987.js"
+        },
+        "w-validate": {
+            "requires": [
+                "mt-base",
+                "node",
+                "dom"
+            ],
+            "path": "w-validate/w-validate-min.v6f87743b.js"
+        },
+        "w-validate-base": {
+            "requires": [
+                "w-core",
+                "mt-base",
+                "e-validator",
+                "widget",
+                "node",
+                "e-validator/rules"
+            ],
+            "path": "w-validate-base/w-validate-base-min.vf03b1404.js"
+        }
+    }
+});
+M.addGroup("vendor", {
+    "root": "vendor/",
+    "combine": true,
+    "modules": {
+        "DD_belatedPNG_0.0.8a.min": {
+            "requires": [],
+            "path": "js/DD_belatedPNG_0.0.8a.min-min.v3b219d4e.js"
+        },
+        "ZeroClipboard": {
+            "requires": [],
+            "path": "js/ZeroClipboard-min.v7d6de6f5.js"
+        },
+        "ag": {
+            "requires": [],
+            "path": "js/ag-min.vcbba537f.js"
+        },
+        "asyncjs.min": {
+            "requires": [],
+            "path": "js/asyncjs.min-min.v2b00cf2f.js"
+        },
+        "capture": {
+            "requires": [],
+            "path": "js/login/capture-min.vc61ce960.js"
+        },
+        "detectZoom": {
+            "requires": [],
+            "path": "js/detectZoom-min.ve4b5d49c.js"
+        },
+        "echarts-all": {
+            "requires": [],
+            "path": "js/echarts-all-min.v47a12be2.js"
+        },
+        "echarts-cus-plain.min": {
+            "requires": [],
+            "path": "js/echarts-cus-plain.min-min.vb2364b14.js"
+        },
+        "es5-shim.min": {
+            "requires": [],
+            "path": "js/es5-shim.min-min.v619603cf.js"
+        },
+        "formchecker": {
+            "requires": [],
+            "path": "js/login/formchecker-min.v935558eb.js"
+        },
+        "g.pie": {
+            "requires": [],
+            "path": "js/g.pie-min.vb2de4f4c.js"
+        },
+        "g.raphael-min": {
+            "requires": [],
+            "path": "js/g.raphael-min-min.v6ae37366.js"
+        },
+        "gest.min": {
+            "requires": [],
+            "path": "js/gest.min-min.vbff929f3.js"
+        },
+        "handlebars-v2.0.0": {
+            "requires": [],
+            "path": "js/handlebars-v2.0.0-min.vee5979ec.js"
+        },
+        "html5shiv.min": {
+            "requires": [],
+            "path": "js/html5shiv.min-min.v831d9bca.js"
+        },
+        "jquery-1.11.1.min": {
+            "requires": [],
+            "path": "js/jquery-1.11.1.min-min.v8101d596.js"
+        },
+        "jquery-2.1.1.min": {
+            "requires": [],
+            "path": "js/jquery-2.1.1.min-min.ve40ec216.js"
+        },
+        "jquery.fileupload": {
+            "requires": [],
+            "path": "js/jquery.fileupload-min.v76762f4e.js"
+        },
+        "jquery.iframe-transport": {
+            "requires": [],
+            "path": "js/jquery.iframe-transport-min.v2e0baf07.js"
+        },
+        "jquery.sparkline.min": {
+            "requires": [],
+            "path": "js/jquery.sparkline.min-min.v56be28a1.js"
+        },
+        "jquery.ui.widget": {
+            "requires": [],
+            "path": "js/jquery.ui.widget-min.v0b442706.js"
+        },
+        "js.cookie": {
+            "requires": [],
+            "path": "js/js.cookie-min.va8018197.js"
+        },
+        "jszip": {
+            "requires": [],
+            "path": "js/jszip-min.v0ecdb4e8.js"
+        },
+        "knockout.mapping.min": {
+            "requires": [],
+            "path": "js/knockout.mapping.min-min.va863b196.js"
+        },
+        "knockout.min": {
+            "requires": [],
+            "path": "js/knockout.min-min.va2d65ff1.js"
+        },
+        "lodash.min": {
+            "requires": [],
+            "path": "js/lodash.min-min.v58e3df17.js"
+        },
+        "mt-zepto": {
+            "requires": [],
+            "path": "js/mt-zepto-min.vc6248849.js"
+        },
+        "numeral.min": {
+            "requires": [],
+            "path": "js/numeral.min-min.v27afcfdd.js"
+        },
+        "promise.min": {
+            "requires": [],
+            "path": "js/promise.min-min.v80f1064e.js"
+        },
+        "pubSDK.src": {
+            "requires": [],
+            "path": "js/pubSDK.src-min.v577b145a.js"
+        },
+        "raphael-min": {
+            "requires": [],
+            "path": "js/raphael-min-min.v1e206e9e.js"
+        },
+        "raven-helper.min": {
+            "requires": [],
+            "path": "js/raven-helper.min-min.v0cb51226.js"
+        },
+        "sinon": {
+            "requires": [],
+            "path": "js/sinon-min.vac694eec.js"
+        },
+        "soso-1.0": {
+            "requires": [],
+            "path": "js/soso-1.0-min.v6060ddf4.js"
+        },
+        "unitlogin-section": {
+            "requires": [],
+            "path": "js/login/unitlogin-section-min.v4f4617f3.js"
+        },
+        "unitlogin-section.min": {
+            "requires": [],
+            "path": "js/login/unitlogin-section.min-min.vbc009117.js"
+        },
+        "vivid-v0.3.1": {
+            "requires": [],
+            "path": "js/vivid-v0.3.1-min.v9d4cffd4.js"
+        },
+        "xlsx": {
+            "requires": [],
+            "path": "js/xlsx-min.v7bc30553.js"
+        },
+        "zepto-1.1.4.min": {
+            "requires": [],
+            "path": "js/zepto-1.1.4.min-min.veadc41a1.js"
+        }
+    }
+});
+M.addGroup("epassport", {
+    "root": "epassport/",
+    "combine": true,
+    "modules": {
+        "epassport-base": {
+            "requires": [
+                "mt-base",
+                "p-node-effect",
+                "io-base",
+                "json-parse",
+                "io-form"
+            ],
+            "path": "js/base-min.ve198b045.js"
+        },
+        "epassport-embedaccount": {
+            "requires": [
+                "epassport-base",
+                "io-form",
+                "json-parse"
+            ],
+            "path": "js/embed-account-min.v13ef1acf.js"
+        },
+        "epassport-misc": {
+            "requires": [
+                "epassport-base",
+                "mt-uiutil",
+                "array-extras",
+                "io-base",
+                "io-form",
+                "mt-formchecker",
+                "epassport-passwordstrength"
+            ],
+            "path": "js/misc-min.ve131feff.js"
+        },
+        "epassport-passwordstrength": {
+            "requires": [
+                "mt-base"
+            ],
+            "path": "js/passwordstrength-min.vbf22a5cb.js"
+        },
+        "epassport-verify-account": {
+            "requires": [
+                "epassport-base",
+                "mt-uiutil",
+                "w-select-cascade",
+                "array-extras",
+                "io-base",
+                "io-form"
+            ],
+            "path": "js/verify-account-min.v4e2b1e0b.js"
+        },
+        "mini_base": {
+            "requires": [],
+            "path": "js/mini_base-min.v80286cc2.js"
+        },
+        "subacct-add": {
+            "requires": [],
+            "path": "js/subacct-add-min.v3daac505.js"
+        },
+        "subacct-ajax": {
+            "requires": [],
+            "path": "js/subacct-ajax-min.v7aac60e6.js"
+        },
+        "subacct-default": {
+            "requires": [],
+            "path": "js/subacct-default-min.vb93d27d1.js"
+        },
+        "subacct-dialog": {
+            "requires": [
+                "mt-dialog",
+                "subacct-ajax",
+                "node-event-simulate"
+            ],
+            "path": "js/subacct-min.v693e09cd.js"
+        },
+        "subacct-utils": {
+            "requires": [],
+            "path": "js/subacct-utils-min.vc6314d1e.js"
+        }
+    }
+});

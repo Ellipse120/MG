@@ -25,8 +25,7 @@ import com.mg.vo.Order;
 @Controller
 public class OrderMgrController {
 	@RequestMapping("/orderShow")
-	public void showOrder(Order Order,
-			HttpServletResponse response)throws Exception{
+	public static void showOrder()throws Exception{
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
 		Connection conn = factory.createConnection();
@@ -35,6 +34,7 @@ public class OrderMgrController {
 		Destination queue = (Destination) context.getBean("queueOrder");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 		MessageConsumer consumer = sen.createConsumer(queue);
+		
 		consumer.setMessageListener(new MessageListener() {
 
 			@Override
@@ -44,12 +44,17 @@ public class OrderMgrController {
 		
 					try {
 						String s = tm.getText();
+						
+						System.out.println(s);
+						
 						JSONObject json = new JSONObject(s);
-						response.getWriter().print(json.toString());
+						
+						System.out.println(json);
+						//response.getWriter().print(json.toString());
 						//Double unitPrice = (Double) json.get("unitPrice");
 						//int amount = (int) json.get("amount");
-						String orderName = (String) json.get("orderName");
-						System.out.println(orderName);
+						//String orderName = (String) json.get("orderName");
+						
 						
 						FileWriter fw = null;
 						File f = new File("order.log");
@@ -68,5 +73,9 @@ public class OrderMgrController {
 			}
 		});
 
+	}
+	
+	public static void main(String[] args) throws Exception {
+		showOrder();
 	}
 }

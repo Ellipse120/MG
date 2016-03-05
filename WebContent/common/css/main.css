@@ -1,0 +1,14 @@
+body,div,a,ul,li{
+            padding: 0px;
+              margin: 0px;
+          }
+          li{
+            list-style: none;
+          }
+          
+          body{
+              font-size: 12px;
+              font-family: "微软雅黑",sans-serif;
+              color: #505050;
+              padding: 30px;  
+          }

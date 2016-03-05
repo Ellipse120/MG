@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+      <style>
+          
+          body,div,a,ul,li{
+            padding: 0px;
+              margin: 0px;
+          }
+          
+          
+          li{
+            list-style: none;
+          }
+          
+          
+          body{
+              font-size: 12px;
+              font-family: "微软雅黑",sans-serif;
+              color: #505050;
+              padding: 30px;  
+          }
+          
+          #left_menu{
+            width: 200px; 
+            min-height: 440px;
+            border: 1px solid #bbb;
+            padding-left: 4px;
+            position: relative;
+          }
+          #left_menu_main{
+              min-height: 400px; 
+          }
+          #left_menu p{
+            color: #aaa; 
+          }
+          
+          #promotion h4{
+            background: url(images/menu_txt_1.png) no-repeat;
+            height: 29px;
+          }
+          #promotion_menu_first{
+            background: url(images/iclasscn2_2015_12_03_13_38_15.jpg) no-repeat;
+            height: 29px;
+          }
+           .menu_item{
+               font-size: 1.1em;
+               border-bottom: 1px solid #f0dfd4;
+               line-height: 1.9em;
+               background: url(images/left_icon1.png) no-repeat 180px center;
+           }
+          h5{
+            position: relative;
+          }
+          h5 img{
+              position: absolute;
+              right: 20px;
+              bottom: 10px;
+          }
+          
+          #breakfast h5{
+            background: url(images/menu_txt_2.png) no-repeat;
+            height: 29px;
+          }
+          
+          #lunch h5{
+            background: url(images/menu_txt_3.png) no-repeat;
+            height: 29px;
+          }
+          
+          #dinner h5{
+            background: url(images/menu_txt_4.png) no-repeat;
+              height: 29px;
+          }
+    
+      </style>
+          
+  </head>
+  <body>
+      <div id="left_menu">
+        <div id="left_menu_main">
+          <ul>
+            <li id="promotion">
+                <h4></h4>
+                <ul id="promotion_menu">
+                    <li id="promotion_menu_first"></li>
+                    <li class="menu_item">新品优惠</li>
+                </ul>
+            </li>
+            
+            <li id="breakfast">
+                <h5>
+                    <img src="images/plus.png">
+                </h5>
+                <ul>
+                    <li class="menu_item">团享餐</li>
+                    <li class="menu_item">超值多人餐</li>
+                    <li class="menu_item">美味汉堡</li>
+                </ul>
+            </li>
+            <li id="lunch">
+                <h5><img src="images/minus_sign.png"></h5>
+                <ul>
+                    <li class="menu_item">团享餐</li>
+                    <li class="menu_item">超值多人餐</li>
+                    <li class="menu_item">美味汉堡</li>
+                </ul>
+              </li>
+            <li id="dinner">
+                <h5><img src="images/plus.png"></h5>
+                <ul>
+                    <li class="menu_item">团享餐</li>
+                    <li class="menu_item">超值多人餐</li>
+                    <li class="menu_item">美味汉堡</li>
+                    <li class="menu_item">团享餐</li>
+                    <li class="menu_item">超值多人餐</li>
+                    <li class="menu_item">美味汉堡</li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+          <p>
+          注：早餐、夜宵仅限部分肯德基宅急送送餐区域供应。肯德基宅急送实行专属菜单及价格，不同城市的送餐菜单有所不同。不同时段产品品项及价格有所不同。
+          </p>
+      </div>
+      
+      
+    
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+      <script>
+       //划过菜单时的颜色变化 
+       $(".menu_item").on("mouseover",function(){
+        $(this).css("background-color","red").css("color","white");
+       
+       }).on("mouseout",function(){
+        $(this).css("background-color","white").css("color","black");
+       });
+        
+        //初始化早午晚餐的状态信息
+        $("li h5").each(function(index){
+            if(index!=1){
+                $(this).data("stat",false).next().hide();
+            }
+            else{
+                $(this).data("stat",true);  
+            }
+        });
+          
+        //改变箭头的状态以及菜单的出现与消失  
+        $("li h5").click(function(){
+            var stat=$(this).data("stat");
+            $(this).data("stat",!stat);
+            if(!stat){
+                $(this).children().first().attr("src","images/minus_sign.png");   
+            }
+            else{
+                $(this).children().first().attr("src","images/plus.png"); 
+            }
+            
+           $(this).next("ul").toggle(600);
+            
+        });
+        
+      
+      </script>
+  </body>
+</html>
+

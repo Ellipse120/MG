@@ -1,0 +1,1 @@
+document.write("<script type='text/javascript' src='http://nh.emap.yum.com.cn/CloudEMap/config.js'></script>");var videoPathHttps="https://wowviedo.4008823823.com.cn/kfcios/Html/jsp/wowBarrel/video/wowVideo/wow_intro.mp4";var videoPathHttp="http://wowviedo.4008823823.com.cn/kfcios/Html/jsp/wowBarrel/video/wowVideo/wow_intro.mp4";

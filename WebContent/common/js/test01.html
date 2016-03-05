@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+      <style>
+       #john{
+         background-color: aqua; 
+           width: 100px;
+           height: 100px;
+           margin: 5px;
+       }
+          .mei{
+            display: none;
+          }
+      </style>
+  </head>
+  <body>
+      <button id="btn" class="btn btn-primary">change</button>
+      <button id="btn1" class="btn btn-primary">mei</button>
+    <div id="john">
+      
+      
+      </div>
+      
+      <div >
+      
+      
+      </div>
+      
+      <div >
+      
+      
+      </div>
+      
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+      <script>
+          
+          
+          
+   
+          
+          
+          
+          
+      var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            var ms=document.getElementsByTagName("div");
+            for(var i=0;i<ms.length;i++){
+                ms.item(i).className="tt";   
+            } 
+        };
+      var btn1=document.getElementById("btn1");
+          btn1.onclick=function(){
+             var ms=document.getElementsByTagName("div");
+            for(var i=0;i<ms.length;i++){
+                ms.item(i).className="mei";   
+            }  
+          };
+      </script>
+      
+      
+  </body>
+</html>
+

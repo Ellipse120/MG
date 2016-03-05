@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         body,div,a,ul,li{
+            padding: 0px;
+              margin: 0px;
+          }
+          li{
+            list-style: none;
+          }
+          
+          body{
+              font-size: 12px;
+              font-family: "微软雅黑",sans-serif;
+              color: #505050;
+              padding: 30px;  
+          }
+  
+        #cart{
+            border: 1px solid gray;
+            width: 190px;
+            margin: 20px;
+        }
+        #cart_top{
+            height: 34px;
+            background-color: #c6000a;
+            color: white;
+            font-size: 1.3em;
+            padding: 6px;
+            font-weight: bold;
+            position: relative;
+        }
+        #cart_top span{
+            color: red;
+            font-size: 1.3em;
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            background: url(images/shopping_cart_num.png); 
+            position: absolute;
+            right: 10px;
+            top: 0px;
+        }
+        #cart_body{
+            padding: 10px 15px;;
+            min-height: 100px;   
+        }
+        #cart_body li p{
+            line-height: 0.8em;   
+        }
+        #cart_body li{
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 1.2em; 
+            border-bottom: 1px #c5c5c5 solid;
+        }
+        #cart_body li p img{
+            position: absolute;
+            right: 8px;
+        }
+        .cart_pro_price{
+            position: absolute;
+            right: 8px;
+            bottom: 14px;
+            
+        }
+        
+        #cart_settlement{
+               
+        }
+        #cart_settlement p{
+            margin: 5px 5px;
+            position: relative;
+            font-weight: bolder;
+        }
+        #cart_settlement img{
+            margin-top: 15px;   
+        }
+        #cart_settlement p span{
+            position: absolute;
+            font-weight:500;
+            color: red;
+            right: 5px;
+        }
+        
+        #cart_addr{
+            margin: 10px 10px 30px 10px;
+            position: relative;
+        }
+        #cart_addr p{
+            line-height: 0.5em;   
+        }
+        #cart_addr p a{
+            position: absolute;
+            right: 5px;
+        }
+        #cart_tip{
+            margin-left: 10px;   
+        }
+        #pro_sample{
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button class="btn btn-primary test">测试添加菜品</button>
+    <div id="cart">
+        <div id="cart_top">
+        购物车
+        <span id="cart_pro_kinds" class="text-center">
+            0  
+        </span>
+        </div>
+        <div id="cart_body">
+            <!--此部分被隐藏，用来clone -->
+                <li id="pro_sample">
+                    <p>
+                        <span class="pro_name">可以被替换名字</span> <img src="images/del.png">
+                    </p>
+                    <p><span>
+                        <button class="btn btn-default btn-xs minus">-</button>
+                        <input type="text" style="font-size:10px;line-height:1em;width:20px;" class="text-center" value="1">
+                        <button class="btn btn-default btn-xs plus">+</button>
+                        
+                        </span><span class="cart_pro_price">可以被替换价格</span>
+                    </p>
+                </li>
+            
+            
+            <ul>
+                
+            </ul>
+        </div>
+        <div id="cart_settlement">
+            <p>小计：<span id="sub_total">67.5</span></p>
+        <p>外送费：<span id="carry_price">9.0</span></p>
+        <p>合计：<span id="total">76.5</span></p>
+        <img src="images/jiesuan.gif" class="center-block">
+        </div>
+        <div id="cart_addr">
+            <p>送餐地址：<a href="#">修改</a></p>
+            <p>北京市中关村科学院南路985楼</p>
+        </div>
+        <div id="cart_tip">
+            <p>提醒：根据您最终提交订单时间，送餐时间可能略有调整。</p>
+        </div>
+    </div>
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        
+        var cart;
+        
+        function init(){
+            //购物车信息的保存地
+            cart=$("#cart");
+            cart.data("pros",new Array());
+            cart.data("subTotal",0);
+            cart.data("carry",0);
+            cart.data("total",0);
+        }
+        
+        //渲染到购物清单
+        function rendar(){
+            //生成购物列表
+            var pros=cart.data("pros");
+            $("#cart_pro_kinds").text(pros.length+"");
+            
+            $("#cart_body ul").empty();
+            
+            for(var i=0;i<pros.length;i++){
+                $("#pro_sample").clone(true)
+                .data("id",pros[i].id)
+                .css("display","block").
+                find(".pro_name").text(pros[i].name).end().
+                find(".cart_pro_price").text(pros[i].price+"").end()
+                .find("input").val(pros[i].count).end()
+                    .appendTo($("#cart_body ul"));
+            }
+            $("#sub_total").text(cart.data("subTotal")+"");
+            $("#carry_price").text(cart.data("carry")+"");
+            $("#total").text(cart.data("total")+"");
+           
+        }
+       
+        //添加到购物车
+        function addToCart(pro){
+             var isExist=false;
+            var pros=cart.data("pros");
+            for(var i=0;i<pros.length;i++){
+                if(pro.id==pros[i].id){
+                    isExist=true;
+                    pros[i].count+=1;
+                    break;
+                }
+                   
+            }
+            
+            if(!isExist){
+               cart.data("pros").push(pro); 
+            }
+        }
+      
+        //计算价格
+        function caculate(){
+            var pros=cart.data("pros");
+            var subTotal=0;
+            var carry=0;
+            for(var i=0;i<pros.length;i++){
+                subTotal+=pros[i].count*pros[i].price;  
+            }
+            cart.data("subTotal",subTotal);
+            if(subTotal<100){
+                carry=9;
+                
+            }
+            cart.data("carry",carry);   
+            cart.data("total",subTotal+carry);
+        }
+        
+        //初始化
+        init();
+        
+        //增加数量  
+        $("#cart_body .plus").on("click",function(){
+            var id=$(this).parent().parent().parent().data("id");
+            var pros=cart.data("pros");
+            for(var i=0;i<pros.length;i++){
+                if(pros[i].id==id){
+                    pros[i].count+=1;
+                    break;
+                }
+            }
+            caculate();
+            rendar();
+            
+            
+        });
+        
+        //减少数量
+        $("#cart_body .minus").on("click",function(){
+            var id=$(this).parent().parent().parent().data("id");
+            var pros=cart.data("pros");
+            for(var i=0;i<pros.length;i++){
+                if(pros[i].id==id){
+                    if(pros[i].count>0){
+                        pros[i].count-=1;
+                    }
+                    break;
+                }
+            }
+            caculate();
+            rendar();
+        });
+        
+        
+        //删除
+        $("img[src$='del.png']").on("click",function(){
+            var id=$(this).parent().parent().data("id");
+           
+            var props=cart.data("pros");
+            
+            for(var i=0;i<props.length;i++){
+               
+                if(props[i].id==id){
+                    props.splice(i,1);
+                }
+            }
+            caculate();
+            rendar();
+        });
+        
+        //测试
+        $(".test").on("click",function(){
+            var pro;
+            var pro1={name:"经典炸鸡",price:34.5,id:"1234",count:1}
+            var pro2={name:"炸薯条",price:27.0,id:"1231",count:1}
+            var r=Math.ceil(2*Math.random());
+            if(r==1){
+              pro=pro1;  
+            }
+            else{
+                pro=pro2;   
+            }
+            
+            addToCart(pro);
+            
+            caculate();
+            
+            rendar();
+   
+        });
+        
+        
+        
+        
+    </script>
+</body>
+
+</html>

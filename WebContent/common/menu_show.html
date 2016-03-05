@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+      <style>
+           body,div,a,ul,li,img{
+            padding: 0px;
+              margin: 0px;
+          }
+         
+          
+          
+          li{
+            list-style: none;
+          }
+          
+           #main_menu{
+            width:564px;    
+          }
+          .main_tip{
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 1.05em;
+          }
+          
+          #main_menu li{
+              width: 180px;
+              margin: 0px 8px 8px 0px;
+              padding-bottom: 6px;
+              border: 1px solid #bbb;
+              background-color: #f7f6f6;
+              font-size: 1.08em;
+              position: relative;
+              cursor: pointer;
+              float: left;
+          }
+          #main_menu li img{
+            width: 100%;   
+          }
+          #main_menu li p{
+            line-height: 2em;
+            margin: 7px 0px 7px 7px;   
+          }
+          .main_changer{
+            position: absolute;
+            right: 5px;
+          }
+          
+          body{
+              font-size: 12px;
+              font-family: "微软雅黑",sans-serif;
+              color: #505050;
+              padding: 30px;  
+          }
+      </style>
+          
+  </head>
+  <body>
+
+        <div id="main_menu" class="clearfix">
+        <p class="main_tip">热门推荐(此处可点)：
+<a>外带全家桶</a> <a>圣诞新年派对套餐</a></p>
+          <ul>
+            <li>
+                <div><img src="images/73_24626.jpg"></div>
+            <p class="pro_name">外带全家桶</p>
+            <p style="color:#6b2d38">
+            <span class="main_price">86.0/份</span>
+            <span class="main_changer">
+            <button class="btn btn-default btn-xs minus">-</button>
+            <input style="width:30px;text-align:center;font-size:5px;line-height: 1.3em;" type="text" value="1">    
+            <button class="btn btn-default btn-xs plus">+</button> 
+            </span>
+            </p>
+            <p><button class="btn btn-default btn-sm disabled center-block">即将售卖</button></p>
+            </li>
+            
+            </ul>
+        </div>
+
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+      <script>
+        //主菜单部分的脚本      
+          
+    var imgs=["73_24626.jpg","73_24627.jpg","73_24628.jpg","73_24629.jpg","73_24730.jpg","73_24731.jpg","47_18416.jpg","47_18457.jpg","86_28332.jpg","105_34826.jpg"];
+          var pro_names=["牛肉汉堡","猪肉蛋堡","猪肉腿堡","香嫩烤肉堡套餐+奶茶","香嫩烤肉堡套餐+可乐","香嫩烤肉堡套餐+卡布","喱哩土豆泥","甜玉米","清凉小菜","全鸡套餐"];
+        
+        //生成餐品
+        function createOneMenu(){
+         var img_num=imgs.length;
+            var scope=Math.floor(Math.random()*img_num);
+            
+            var m=$("#main_menu ul li:first").clone(true);
+            
+            m.find("img").attr("src","images/"+imgs[scope]);
+            m.find(".pro_name").text(pro_names[scope]);
+            m.find(".main_price").text(scope*8+".0/份");
+            if(scope%3!=0)
+            m.find(".disabled").removeClass("disabled").removeClass("btn-default").addClass("btn-danger").text("订 购");
+            
+            $("#main_menu").append(m);
+        }
+          
+          
+          
+        $(".plus").on("click",function(){
+            var numIpt=$(this).prev();
+            var num=numIpt.val();
+            num++;
+            numIpt.val(num.toString());
+        });
+        $(".minus").on("click",function(){
+            var numIpt=$(this).next();
+            var num=numIpt.val();
+            if(num>0)
+            num--;
+            numIpt.val(num.toString());
+        });
+          
+        
+          
+        //随机生成餐品  
+        $(".main_tip").on("click",function(){
+            createOneMenu();
+        });
+          
+        //点击menu_item，产生主菜单
+        $(".menu_item").on("click",function(){
+            for(var i=0;i<7;i++){
+                createOneMenu();   
+            }
+        });  
+      
+      </script>
+  </body>
+</html>
+

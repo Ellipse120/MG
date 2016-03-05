@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KFC欢迎您！</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+       <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+   
+       
+        <style>
+          #footer{
+            border-top: 1px solid #dfdfdf;
+            padding-top: 10px;
+            height: 20px;
+            
+            clear: both;
+          }
+          #footer li{
+            display: inline-block;
+            padding: 5px 10px;
+            background: url(images/footer_li_bg.png) no-repeat right;
+          }
+          .footer_li_long{
+            margin-left: 30px;   
+          }
+      </style>  
+     
+        
+        
+      </script>  
+  </head>
+  <body>
+
+  <center> 
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="./images/3.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <img src="./images/2.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+   
+      <div class="item">
+      <img src="./images/1.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+  </div>
+   
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+</div>
+
+
+<form enctype='application/json' class="form-inline" id="form1" name= "form1" method="get" action="/KFC/userLogin" />
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+            
+<br/><br/>
+    <input type="text" class="form-control" id="UserName" placeholder="UserName" name="userName">
+  </div>
+  <div class="form-group">
+   
+      <label class="sr-only" for="Password3" id="password" name="password" >Password</label>
+      <br/><br/>
+    <input type="password" class="form-control" id="Password"  name="password" placeholder="Password">
+<br/>
+  </div>
+  <br> <br/> <div class="checkbox">
+    <label>
+      <input type="checkbox"> Remember me
+    </label>
+  </div>
+ <br/> 
+
+      <!-- Button trigger modal -->
+ <br/> 
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"  >
+             注册
+      </button>
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" onclick="onClik()" >
+            登陆
+    
+      </button> 
+</form>
+
+
+      
+      
+      </center>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">
+          </span></button>
+        <h4 class="modal-title" id="myModalLabel">注册</h4>
+      </div>
+      <div class="modal-body">
+    
+<form  method="post" action="/KFC/userRegist" id="reform"  >
+  <div class="form-group">
+    <label for="exampleInputEmail1">用户名</label>
+    <input type="text" class="form-control" id="reUserName" name="userName" placeholder="UserName">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">密码</label>
+    <input type="password" class="form-control" id="rePassword" name="password" placeholder="Password">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputPassword1">地址</label>
+    <input type="text" class="form-control" id="reAddress" name="address" placeholder="Location">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputPassword1">手机号</label>
+    <input type="text" class="form-control" id="rePhone" name="phoneNum" placeholder="PhoneNumber" >
+  </div>
+
+            
+  <!--<div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>-->
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default" onclick="reonClik();">Submit</button>
+</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br><br>
+      
+      <center>
+      <div id="footer" style="height:10px;clear:both">
+          <div class="site_info">
+            <ul>
+                <li class="footer_li">法律条款</li>
+                <li class="footer_li">隐私条款</li>
+                <li class="footer_li">联系我们</li>
+                <li class="footer_li">加入我们</li>
+                <li class="footer_li">网站运营者信息</li>
+                <li class="footer_li footer_li_long">版权所有 414.rom'com（中国）投资有限公司 沪ICP备05031779号</li>
+            </ul>
+          </div>
+        </div></center>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+         <script>
+      function clicke(){
+         alert("事件");
+     }
+   </script>
+   
+   
+   
+<script type="application/javascript">  
+  
+$.fn.serializeObject = function()    
+{    
+   var o = {};    
+   var a = this.serializeArray();    
+   $.each(a, function() {    
+       if (o[this.name]) {    
+           if (!o[this.name].push) {    
+               o[this.name] = [o[this.name]];    
+           }    
+           o[this.name].push(this.value || '');    
+       } else {    
+           o[this.name] = this.value || '';    
+       }    
+   });    
+   return o;     
+};  
+
+    function onClik(){   
+        var userinfo = $('#form1').serializeObject();//自动将form表单封装成json
+         var v = JSON.stringify(userinfo);//从json对象中解析出字符串
+        document.form1.submit(); 
+          /* $("#form1").on("click",function(){
+        	 $.ajax("userLogin",{
+        		 data:userinfo,
+        		 dataType:"json",
+        		 type:"post",
+        		 success:function(d){
+        			 alert(d);
+        		 }
+        	 });
+           */
+     }
+</script>
+
+
+
+<script type="application/javascript">  
+  
+$.fn.serializeObject = function()    
+{    
+   var o = {};    
+   var a = this.serializeArray();    
+   $.each(a, function() {    
+       if (o[this.name]) {    
+           if (!o[this.name].push) {    
+               o[this.name] = [o[this.name]];    
+           }    
+           o[this.name].push(this.value || '');    
+       } else {    
+           o[this.name] = this.value || '';    
+       }    
+   });    
+   return o;     
+};  
+           function reonClik(){  
+       /* var data = $("#form1").serializeArray(); //自动将form表单封装成json  
+        alert(JSON.stringify(data));  */
+        var reuseruserinfo = $('#reform').serializeObject();  
+        alert(JSON.stringify(reuseruserinfo)); /*################################################################封装好的用户的注册信息reuserinfo####################################################################################*/
+}  
+      </script>
+      <script type="application/javascript"> 
+  </body>
+</html>

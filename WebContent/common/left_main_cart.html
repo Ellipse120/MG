@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+      <style>
+         
+         /*整体布局*/
+          #wrapper{
+            width:  966px;
+            margin: 0px auto;
+          }
+          
+         
+        
+          /*左菜单部分*/  
+          #left_menu{
+            width: 200px; 
+            min-height: 440px;
+            border: 1px solid #bbb;
+            padding-left: 4px;
+            position: relative;
+            margin-right: 12px;
+          }
+          #left_menu_main{
+              min-height: 400px; 
+          }
+          #left_menu p{
+            color: #aaa; 
+          }
+          
+          #promotion h4{
+            background: url(images/menu_txt_1.png) no-repeat;
+            height: 29px;
+          }
+          #promotion_menu_first{
+            background: url(images/iclasscn2_2015_12_03_13_38_15.jpg) no-repeat;
+            height: 29px;
+          }
+           .menu_item{
+               font-size: 1.1em;
+               border-bottom: 1px solid #f0dfd4;
+               line-height: 1.9em;
+               background: url(images/left_icon1.png) no-repeat 180px center;
+           }
+          h5{
+            position: relative;
+          }
+          h5 img{
+              position: absolute;
+              right: 20px;
+              bottom: 10px;
+          }
+          
+          #breakfast h5{
+            background: url(images/menu_txt_2.png) no-repeat;
+            height: 29px;
+          }
+          
+          #lunch h5{
+            background: url(images/menu_txt_3.png) no-repeat;
+            height: 29px;
+          }
+          
+          #dinner h5{
+            background: url(images/menu_txt_4.png) no-repeat;
+              height: 29px;
+          }
+          
+          
+          
+          
+          
+       /*主菜单部分*/   
+          
+           #main_menu{
+            width:564px;    
+          }
+          .main_tip{
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 1.05em;
+          }
+          
+          #main_menu li{
+              width: 180px;
+              margin: 0px 8px 8px 0px;
+              padding-bottom: 6px;
+              border: 1px solid #bbb;
+              background-color: #f7f6f6;
+              font-size: 1.08em;
+              position: relative;
+              cursor: pointer;
+              float: left;
+          }
+          #main_menu li img{
+            width: 100%;   
+          }
+          #main_menu li p{
+            line-height: 2em;
+            margin: 7px 0px 7px 7px;   
+          }
+          .main_changer{
+            position: absolute;
+            right: 5px;
+          }
+          
+          body{
+              font-size: 12px;
+              font-family: "微软雅黑",sans-serif;
+              color: #505050;
+              padding: 30px;  
+          }
+          
+          
+          
+          
+          #left_menu,#main_menu{
+            float: left;
+          }
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+           #cart{
+            border: 1px solid gray;
+            width: 190px;
+           
+               float: left;
+        }
+        #cart_top{
+            height: 34px;
+            background-color: #c6000a;
+            color: white;
+            font-size: 1.3em;
+            padding: 6px;
+            font-weight: bold;
+            position: relative;
+        }
+        #cart_top span{
+            color: red;
+            font-size: 1.3em;
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            background: url(images/shopping_cart_num.png); 
+            position: absolute;
+            right: 10px;
+            top: 0px;
+        }
+        #cart_body{
+            padding: 10px 15px;;
+            min-height: 100px;   
+        }
+        #cart_body li p{
+            line-height: 0.8em;   
+        }
+        #cart_body li{
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 1.2em; 
+            border-bottom: 1px #c5c5c5 solid;
+        }
+        #cart_body li p img{
+            position: absolute;
+            right: 8px;
+        }
+        .cart_pro_price{
+            position: absolute;
+            right: 8px;
+            bottom: 14px;
+            
+            
+        }
+        
+        #cart_settlement{
+               
+        }
+        #cart_settlement p{
+            margin: 5px 5px;
+            position: relative;
+            font-weight: bolder;
+        }
+        #cart_settlement img{
+            margin-top: 15px;   
+        }
+        #cart_settlement p span{
+            position: absolute;
+            font-weight:500;
+            color: red;
+            right: 5px;
+        }
+        
+        #cart_addr{
+            margin: 10px 10px 30px 10px;
+            position: relative;
+        }
+        #cart_addr p{
+            line-height: 0.5em;   
+        }
+        #cart_addr p a{
+            position: absolute;
+            right: 5px;
+        }
+        #cart_tip{
+            margin-left: 10px;   
+        }
+        #pro_sample{
+            display: none;
+        }
+     
+          
+        #top{
+            border-bottom: 2px #c6000a solid;
+            margin-bottom: 6px;
+            position: relative;
+        }
+        #top div{
+            float: left;
+        }
+          #top img{
+            height: 70px;
+            width: 180px;   
+          }
+        #top ul{
+            position: absolute;
+            bottom: 15px;
+            right: 0px;
+        }
+        #top li{
+            color: #C6000a;
+            font-size: 1.15em;
+            font-weight: bold;
+            list-style: none;
+            display: inline-block;
+            margin-right: 100px;
+        }
+          
+        #addr {
+            width: 150px;
+            height: 25px;
+            border: 0;
+          }
+          
+          
+    /* 页脚的部分 */      
+    #footer{
+            border-top: 1px solid #dfdfdf;
+            padding-top: 10px;
+            height: 20px;
+            color: #9fa4a4;
+            clear: both;
+          }
+          #footer li{
+            display: inline-block;
+            padding: 5px 10px;
+            background: url(images/footer_li_bg.png) no-repeat right;
+          }
+          .footer_li_long{
+            margin-left: 30px;   
+          }      
+      </style>
+          
+  </head>
+  <body>
+      <div id="wrapper" class="clearfix">
+      <div id="top" class="clearfix">
+          <div id="logo"><img src="images/site_logo1.jpg"></div>
+          <div><ul><li>首页</li><li>重新登录</li><li>个人中心</li><li>手机客户端</li><li>帮助中心</li></ul></div>
+        </div>
+      <div id="left_menu">
+        <div id="left_menu_main">
+          <ul>
+            <li id="promotion">
+                <h4></h4>
+                <ul id="promotion_menu">
+                    <li id="promotion_menu_first"></li>
+                    <li class="menu_item">新品优惠</li>
+                </ul>
+            </li>
+            
+            <li id="breakfast">
+                <h5>
+                    <img src="images/plus.png">
+                </h5>
+                <ul>
+                    <li class="menu_item">团享餐</li>
+                    <li class="menu_item">超值多人餐</li>
+                    <li class="menu_item">美味汉堡</li>
+                </ul>
+            </li>
+            <li id="lunch">
+                <h5><img src="images/minus_sign.png"></h5>
+                <ul>
+                    <li class="menu_item">团享餐</li>
+                    <li class="menu_item">超值多人餐</li>
+                    <li class="menu_item">美味汉堡</li>
+                </ul>
+              </li>
+            <li id="dinner">
+                <h5><img src="images/plus.png"></h5>
+                <ul>
+                    <li class="menu_item">团享餐</li>
+                    <li class="menu_item">超值多人餐</li>
+                    <li class="menu_item">美味汉堡</li>
+                    <li class="menu_item">团享餐</li>
+                    <li class="menu_item">超值多人餐</li>
+                    <li class="menu_item">美味汉堡</li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+          <p>
+          注：早餐、夜宵仅限部分肯德基宅急送送餐区域供应。肯德基宅急送实行专属菜单及价格，不同城市的送餐菜单有所不同。不同时段产品品项及价格有所不同。
+          </p>
+      </div>
+      
+      
+      
+      
+<!--主菜单部分 -->
+      
+    
+        <div id="main_menu" class="clearfix">
+        <p class="main_tip">热门推荐：
+<a>外带全家桶</a> <a>圣诞新年派对套餐</a></p>
+          <ul>
+            <li>
+                <div><img src="images/73_24626.jpg"></div>
+            <p class="pro_name">外带全家桶</p>
+            <p style="color:#6b2d38">
+            <span class="main_price"><strong>86.0</strong>/份</span>
+            <span class="main_changer">
+            <button class="btn btn-default btn-xs minus">-</button>
+            <input style="width:30px;text-align:center;font-size:5px;line-height: 1.3em;" type="text" value="1">    
+            <button class="btn btn-default btn-xs plus">+</button> 
+            </span>
+            </p>
+            <p><button class="btn btn-default btn-sm disabled center-block order">即将售卖</button></p>
+            </li>
+            
+            </ul>
+        </div>
+      
+      
+      
+      <!--购物车的部分  -->
+      
+      
+      <div id="cart">
+        <div id="cart_top">
+        购物车
+        <span id="cart_pro_kinds" class="text-center">
+            0  
+        </span>
+        </div>
+        <div id="cart_body">
+            <!--此部分被隐藏，用来clone -->
+                <li id="pro_sample">
+                    <p>
+                        <span class="pro_name">可以被替换名字</span> <img src="images/del.png">
+                    </p>
+                    <p><span>
+                        <button class="btn btn-default btn-xs minus">-</button>
+                        <input type="text" style="font-size:10px;line-height:1em;width:20px;" class="text-center" value="1">
+                        <button class="btn btn-default btn-xs plus">+</button>
+                        
+                        </span><span class="cart_pro_price">可以被替换价格</span>
+                    </p>
+                </li>
+            
+            
+            <ul>
+                
+            </ul>
+        </div>
+        <div id="cart_settlement">
+            <p>小计：<span id="sub_total">0.0</span></p>
+        <p>外送费：<span id="carry_price">0.0</span></p>
+        <p>合计：<span id="total">0.0</span></p>
+        <a href="kfcorder.html"><img src="images/jiesuan.gif" class="center-block"></a>
+        </div>
+        <div id="cart_addr">
+            <p>送餐地址：<a href="address.html">修改</a></p>
+            <p><input type="text" id="addr" class="address" value="default address" ></p>
+        </div>
+        <div id="cart_tip">
+            <p>提醒：根据您最终提交订单时间，送餐时间可能略有调整。</p>
+        </div>
+    </div>
+        
+          <!-- 页脚的部分  -->
+
+          <div id="footer" style="height:10px;clear:both">
+          <div class="site_info">
+            <ul>
+                <li class="footer_li">法律条款</li>
+                <li class="footer_li">隐私条款</li>
+                <li class="footer_li">联系我们</li>
+                <li class="footer_li">加入我们</li>
+                <li class="footer_li">网站运营者信息</li>
+                <li class="footer_li footer_li_long">版权所有 John'com（中国）投资有限公司 Group10  沪ICP备05031779号</li>
+            </ul>
+          </div>
+        </div>
+          
+          
+        
+          
+      </div>
+    <!--   end body      -->
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+      <script>
+        
+         
+          
+          var addr1 = $("#addr").val();
+          //document.write(sessionStorage.addr);
+          $("#addr").val(sessionStorage.addr);
+          //alert(addr1);
+          
+          
+          
+          
+      //划过菜单时的颜色变化 
+       $(".menu_item").on("mouseover",function(){
+        $(this).css("background-color","red").css("color","white");
+       
+       }).on("mouseout",function(){
+        $(this).css("background-color","white").css("color","black");
+       });
+        
+        //初始化早午晚餐的状态信息
+        $("li h5").each(function(index){
+            if(index!=1){
+                $(this).data("stat",false).next().hide();
+            }
+            else{
+                $(this).data("stat",true);  
+            }
+        });
+          
+        //改变箭头的状态以及菜单的出现与消失  
+        $("li h5").click(function(){
+            var stat=$(this).data("stat");
+            $(this).data("stat",!stat);
+            if(!stat){
+                $(this).children().first().attr("src","images/minus_sign.png");   
+            }
+            else{
+                $(this).children().first().attr("src","images/plus.png"); 
+            }
+            
+           $(this).next("ul").toggle(100);
+            
+        });
+        
+          
+    
+          
+          
+        //主菜单部分的脚本 
+          
+    var pid=1;      
+          
+    var imgs=["73_24626.jpg","73_24627.jpg","73_24628.jpg","73_24629.jpg","73_24730.jpg","73_24731.jpg","47_18416.jpg","47_18457.jpg","86_28332.jpg","105_34826.jpg"];
+          var pro_names=["牛肉汉堡","猪肉蛋堡","猪肉腿堡","香嫩烤肉堡套餐+奶茶","香嫩烤肉堡套餐+可乐","香嫩烤肉堡套餐+卡布","喱哩土豆泥","甜玉米","清凉小菜","全鸡套餐"];
+        
+        function reset(){
+             var m=$("#main_menu ul li:first").clone(true);
+            $("#main_menu ul").empty();
+            return m;
+        }
+          
+          
+          //生成餐品
+        function createOneMenu(target){
+            pid++;
+            var img_num=imgs.length;
+            var scope=Math.floor(Math.random()*img_num);
+            //var m=$("#main_menu ul li:first").clone(true);
+            var m=target.clone(true);
+            m.find("img").attr("src","images/"+imgs[scope]);
+            m.find(".pro_name").text(pro_names[scope]);
+            m.find(".main_price strong").text(scope*8+".0");
+            
+            m.attr("pid",pid);
+            
+            if(scope%3!=0)
+            m.find(".disabled").removeClass("disabled").removeClass("btn-default").addClass("btn-danger").text("订 购");
+            
+            $("#main_menu ul").append(m);
+        }
+        
+          
+        //主菜单的数量改变  
+          
+        $(".plus").on("click",function(){
+            var numIpt=$(this).prev();
+            var num=numIpt.val();
+            num++;
+            numIpt.val(num.toString());
+        });
+        $(".minus").on("click",function(){
+            var numIpt=$(this).next();
+            var num=numIpt.val();
+            if(num>1)
+            num--;
+            numIpt.val(num.toString());
+        });
+          
+        
+          
+        //随机生成餐品  
+        $(".main_tip").on("click",function(){
+            createOneMenu();
+        });
+          
+        //点击menu_item，产生主菜单
+        $(".menu_item").on("click",function(){
+            var max=Math.ceil(Math.random()*8);
+            var m=reset();
+            for(var i=0;i<max;i++){
+                createOneMenu(m);   
+            }
+        });  
+        
+        
+          
+          
+   
+          
+        //购物车的部分
+          
+        var cart;
+        
+        function init(){
+            //购物车信息的保存地
+            cart=$("#cart");
+            cart.data("pros",new Array());
+            cart.data("subTotal",0);
+            cart.data("carry",0);
+            cart.data("total",0);
+        }
+        
+        //渲染到购物清单
+        function rendar(){
+            //生成购物列表
+            var pros=cart.data("pros");
+            $("#cart_pro_kinds").text(pros.length+"");
+            
+            $("#cart_body ul").empty();
+            
+            for(var i=0;i<pros.length;i++){
+                $("#pro_sample").clone(true)
+                .data("id",pros[i].id)
+                .css("display","block").
+                find(".pro_name").text(pros[i].name).end().
+                find(".cart_pro_price").text(pros[i].price+"").end()
+                .find("input").val(pros[i].count).end()
+                    .appendTo($("#cart_body ul"));
+            }
+            var t=500;
+            var st=$("#sub_total");
+            st.animate({fontSize:'1.8em'},t,function(){st.text(cart.data("subTotal")+"");});
+            st.animate({fontSize:'1.0em'},t);
+            
+            var cy=$("#carry_price");
+            cy.animate({fontSize:'1.8em'},t,function(){cy.text(cart.data("carry")+"");});
+            cy.animate({fontSize:'1.0em'},t);
+            var total=$("#total");
+            total.animate({fontSize:'1.8em'},t,function(){total.text(cart.data("total")+"")});
+            total.animate({fontSize:'1.0em'},t);
+        }
+       
+        //添加到购物车
+        function addToCart(pro){
+             var isExist=false;
+            var pros=cart.data("pros");
+            for(var i=0;i<pros.length;i++){
+                if(pro.id==pros[i].id){
+                    isExist=true;
+                    pros[i].count+=pro.count;
+                   
+                    break;
+                }
+                   
+            }
+            
+            if(!isExist){
+               cart.data("pros").push(pro); 
+            }
+        }
+      
+        //计算价格
+        function caculate(){
+            var pros=cart.data("pros");
+            var subTotal=0;
+            var carry=0;
+            for(var i=0;i<pros.length;i++){
+                subTotal+=pros[i].count*pros[i].price;  
+            }
+            cart.data("subTotal",subTotal);
+            if(subTotal<100 && subTotal>0){
+                carry=9;
+            }
+            cart.data("carry",carry);   
+            cart.data("total",subTotal+carry);
+        }
+        
+        //初始化
+        init();
+        
+        //增加数量  
+        $("#cart_body .plus").on("click",function(){
+            var id=$(this).parent().parent().parent().data("id");
+            var pros=cart.data("pros");
+            for(var i=0;i<pros.length;i++){
+                if(pros[i].id==id){
+                    pros[i].count+=1;
+                    break;
+                }
+            }
+            caculate();
+            rendar();
+
+        });
+        
+        //减少数量
+        $("#cart_body .minus").on("click",function(){
+            var id=$(this).parent().parent().parent().data("id");
+            var pros=cart.data("pros");
+            for(var i=0;i<pros.length;i++){
+                if(pros[i].id==id){
+                    if(pros[i].count>1){
+                        pros[i].count-=1;
+                    }
+                    break;
+                }
+            }
+            caculate();
+            rendar();
+        });
+        
+        
+        //删除
+        $("img[src$='del.png']").on("click",function(){
+            var id=$(this).parent().parent().data("id");
+           
+            var props=cart.data("pros");
+            
+            for(var i=0;i<props.length;i++){
+               
+                if(props[i].id==id){
+                    props.splice(i,1);
+                }
+            }
+            caculate();
+            rendar();
+        });
+          
+          
+          
+          
+          
+          
+          
+          //订购部分的脚本（主菜单和购物车整合）
+        $(".order").on("click",function(){
+            var li=$(this).parent().parent();
+            var x=li.offset().left;
+            var y=li.offset().top;
+            
+            var cartt=$("#cart");
+            var xt=cartt.offset().left;
+            var yt=cartt.offset().top;
+            
+            
+            li.clone().css("position","absolute").css("left",x).css("top",y)
+                .appendTo(li.parent()).animate({left:xt,top:yt,opacity:0},800,
+            function(){
+            var pid=li.attr("pid");
+            var name=li.find(".pro_name").text();
+            var price=li.find(".main_price strong").text();
+            var count=parseInt(li.find("input").val());
+            var addr1 = $("#addr").val();
+            //$("#addr").val(sessionStorage.addr);
+            //生成订单编号？？待做
+            var today = new Date();
+            var num = today.getTime() + Math.floor(Math.random()*11) + pid;
+            alert(num.length);
+            
+            var pro={"name":name,"price":price,"id":pid,"count":count,"address":addr1,"num":num};
+                
+            sessionStorage.kfcorder_num = pro.num;
+            sessionStorage.kfcorder_name = pro.name;
+            sessionStorage.kfcorder_price = pro.price;
+            sessionStorage.kfcorder_id = pro.id;
+            sessionStorage.kfcorder_count = pro.count;
+            sessionStorage.kfcorder_address = pro.address;
+           
+           // alert(pid+"...."+name+"..."+price+"...."+count+"...."+addr1);
+            addToCart(pro);
+            
+            caculate();
+            
+            rendar();  
+                
+            
+            
+            }
+                                              
+        );
+          
+            
+            
+            
+        });
+          
+          
+      
+      </script>
+  </body>
+</html>
+

@@ -1,0 +1,14 @@
+package com.mg.service;
+
+import com.mg.vo.Item;
+
+public interface ItemService {
+	
+	public int itemPutOnShelves(Item item);
+	
+	public int itemPullOffShelves(Item item);
+	
+	public int itemUpdate(Item item);
+	
+	public Item itemQuery(Integer itemid);
+}

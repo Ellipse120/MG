@@ -49,7 +49,7 @@ public class ItemMgrController {
 	}
 	
 	//商品下架
-	@RequestMapping("/itemPutOnShelves")
+	@RequestMapping("/itemPullOffShelves")
 	public int itemPullOffShelves(Item item,HttpServletRequest request)throws Exception{
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -75,7 +75,7 @@ public class ItemMgrController {
 	}
 	
 	//商品更新
-	@RequestMapping("/itemPutOnShelves")
+	@RequestMapping("/itemUpdate")
 	public int itemUpdate(Item item,HttpServletRequest request)throws Exception{
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -101,7 +101,7 @@ public class ItemMgrController {
 	}
 	
 	//商品查询
-		@RequestMapping("/itemPutOnShelves")
+		@RequestMapping("/itemQuery")
 		public String itemQuery(Item item,HttpServletRequest request)throws Exception{
 			
 			Item item1 = its.itemQuery(item.getItemId());

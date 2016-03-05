@@ -8,7 +8,7 @@ import com.mg.dao.SellerDao;
 import com.mg.service.SellerService;
 import com.mg.vo.Seller;
 
-	@Service("sm")
+	@Service("si")
 	public class SellerServiceImpl implements SellerService {
 		@Autowired(required=true)
 		private SellerDao sd;

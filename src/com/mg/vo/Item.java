@@ -18,7 +18,6 @@ public class Item implements Serializable{
 	private String itemName;
 	private Double unitPrice;
 	private int amount;
-	private Double total;
 	
 	public Integer getItemId() {
 		return itemId;
@@ -44,12 +43,7 @@ public class Item implements Serializable{
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	public Double getTotal() {
-		return total;
-	}
-	public void setTotal(Double total) {
-		this.total = total;
-	}
+	
 	
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -21,14 +22,23 @@ public class ItemDaoImpl implements ItemDao{
 	}
 
 	@Override
-	public int deleteItem(Item item) {
-		em.remove(item);
-		return item.getItemId();
+	public int deleteItem(Integer itemId) {
+		String jpql = "delete from Item i where i.itemId=:id";
+		@SuppressWarnings("unchecked")
+		Query query=em.createQuery(jpql);
+		query.setParameter("id", itemId);
+		query.executeUpdate();
+		return itemId;
 	}
 	
 	@Override
 	public int updateItem(Item item) {
-		em.refresh(item);
+		String jpql = "update Item i set i.unitPrice=:price where i.itemId=:id";
+		@SuppressWarnings("unchecked")
+		Query query=em.createQuery(jpql);
+		query.setParameter("price", item.getUnitPrice());
+		query.setParameter("id", item.getItemId());
+		query.executeUpdate();
 		return item.getItemId();
 	}
 	

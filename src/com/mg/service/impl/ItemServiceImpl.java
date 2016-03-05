@@ -8,7 +8,7 @@ import com.mg.dao.ItemDao;
 import com.mg.service.ItemService;
 import com.mg.vo.Item;
 
-@Service("sm")
+@Service("ii")
 public class ItemServiceImpl implements ItemService{
 	
 		@Autowired(required=true)
@@ -22,8 +22,8 @@ public class ItemServiceImpl implements ItemService{
 
 		@Override
 		@Transactional
-		public int itemPullOffShelves(Item item) {
-			return itd.deleteItem(item);
+		public int itemPullOffShelves(Integer itemId) {
+			return itd.deleteItem(itemId);
 		}
 
 		@Override

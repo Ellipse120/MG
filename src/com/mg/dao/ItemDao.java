@@ -6,7 +6,7 @@ public interface ItemDao {
 	
 	public int addItem(Item item);
 	
-	public int deleteItem(Item item);
+	public int deleteItem(Integer itemId);
 	
 	public int updateItem(Item item);
 	

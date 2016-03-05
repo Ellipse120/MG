@@ -24,9 +24,9 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
         >
 	<!-- default-autowire="byName" -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	<context:component-scan base-package="com.kfc.dao"></context:component-scan>
-	<context:component-scan base-package="com.kfc.service"></context:component-scan>
-	<context:component-scan base-package="com.kfc.aspect"></context:component-scan>
+	<context:component-scan base-package="com.mg.dao"></context:component-scan>
+	<context:component-scan base-package="com.mg.service"></context:component-scan>
+	<context:component-scan base-package="com.mg.aspect"></context:component-scan>
 	
 	
 	
@@ -57,7 +57,7 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 		<property name="dataSource" ref="ds" />
 		<property name="persistenceUnitName" value="unitName"></property>
 		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
-		<property name="packagesToScan" value="com.kfc.vo" /><!--待扫描的实体类包，不再需要persistence.xml了 -->
+		<property name="packagesToScan" value="com.mg.vo" /><!--待扫描的实体类包，不再需要persistence.xml了 -->
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>

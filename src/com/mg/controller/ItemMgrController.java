@@ -61,7 +61,7 @@ public class ItemMgrController {
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 		MessageProducer producer = sen.createProducer(queue);
 		
-		int flag = its.itemPullOffShelves(item);
+		int flag = its.itemPullOffShelves(item.getItemId());
 		if(flag>0){
 			JSONObject json = new JSONObject();
 			json.put("itemId", item.getItemId());

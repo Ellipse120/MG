@@ -16,13 +16,14 @@ public class SellerTest {
 		ss = (SellerService) context.getBean("si");
 	}
 	@Test
-	public  void sellerLoginTest(){
-		Seller seller = ss.login("catlina", "123");
+	public  void testSellerLogin(){
+		Seller seller = ss.login("catalina", "123");
+		System.out.println(seller);
 	}
 	@Test
-	public  void sellerRegistTest(){
+	public  void testSellerRegist(){
 		Seller seller = new Seller();
-		seller.setSellerName("catlina");
+		seller.setSellerName("catalina");
 		seller.setPassword("123");
 		ss.regist(seller);
 	}

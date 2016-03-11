@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>sellerLogin</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+   </head>
+    <body>
+        <div class="a1">KFC 商 家 登 录 系 统</div>
+        <br>
+        
+        <div>
+    <form id="account-login-form" method="post" action="sellerLogin">
+  <div class="form-group">
+    <label for="exampleInputEmail1">sellerName</label>
+    <input type="text" class="form-control" name="sellerName" id="exampleInputEmail2" placeholder="sellerName">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">Login</button>
+            </form>
+        </div>
+        
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"  >
+             注册
+      </button>
+        
+       <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">
+          </span></button>
+        <h4 class="modal-title" id="myModalLabel">注册</h4>
+      </div>
+      <div class="modal-body">
+    
+<form  method="post" action="sellerRegist" id="reform"  >
+  <div class="form-group">
+    <label for="exampleInputEmail1">用户名</label>
+    <input type="text" class="form-control" id="reUserName" name="sellerName" placeholder="UserName">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">密码</label>
+    <input type="password" class="form-control" id="rePassword" name="password" placeholder="Password">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputPassword1">地址</label>
+    <input type="text" class="form-control" id="reAddress" name="address" placeholder="Location">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputPassword1">手机号</label>
+    <input type="text" class="form-control" id="rePhone" name="phoneNum" placeholder="PhoneNumber" >
+  </div>
+
+            
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default" onclick="reonClik();">Submit</button>
+</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+ 
+
+        
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+        
+    <script type="application/javascript">  
+  
+$.fn.serializeObject = function()    
+{    
+   var o = {};    
+   var a = this.serializeArray();    
+   $.each(a, function() {    
+       if (o[this.name]) {    
+           if (!o[this.name].push) {    
+               o[this.name] = [o[this.name]];    
+           }    
+           o[this.name].push(this.value || '');    
+       } else {    
+           o[this.name] = this.value || '';    
+       }    
+   });    
+   return o;     
+};  
+        function reonClik(){  
+            var reuseruserinfo = $('#reform').serializeObject();  
+            //alert(JSON.stringify(reuseruserinfo)); 
+            $("#reform").on("click",function(){
+        $.ajax("orderSubmit",{data:reuseruserinfo,type:"post",sucess:function(d){
+           alert("sucess!!!");
+        }});    
+    })
+}  
+      </script>
+        
+    </body>
+</html>
+      
+      
+      

@@ -5,6 +5,14 @@ body,div,a,ul,li{
           li{
             list-style: none;
           }
+.a1{
+    font-size: 30px;
+    margin: auto;
+    width: auto;
+    color: firebrick;
+    padding: 10px;
+    border-bottom-color: aqua;
+}
           
           body{
               font-size: 12px;

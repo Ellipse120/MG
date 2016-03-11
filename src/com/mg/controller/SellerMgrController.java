@@ -14,28 +14,30 @@ public class SellerMgrController {
 	@Autowired(required = true)
 	private SellerService ss;
 
-	@RequestMapping("/SellerLogin")
+	@RequestMapping("common/sellerLogin")
 	public String login(String sellerName, String password,
-			HttpServletRequest request) throws Exception {
+			HttpServletRequest request) {
 		System.out.println(sellerName);
 		System.out.println(password);
+		
 		Seller seller = ss.login(sellerName, password);
+		System.out.println(seller);
 		if (seller != null) {
 			request.getSession().setAttribute("sellerName", sellerName);
-			return "registSuc";
+			return "redirect:/registSuc.html";
 		} else {
-			return "login";
+			return "common/sellerLogin";
 		}
 	}
 
-	@RequestMapping("/sellerRegist")
+	@RequestMapping("common/sellerRegist")
 	public String regist(Seller seller, HttpServletRequest request) {
 		System.out.println(seller.getSellerName());
 		int flag = ss.regist(seller);
 		if (flag > 0) {
 			return "redirect:/registSuc.html";
 		} else {
-			return "regist";
+			return "common/sellerLogin";
 		}
 	}
 }

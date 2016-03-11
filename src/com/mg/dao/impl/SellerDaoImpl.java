@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.mg.dao.SellerDao;
 import com.mg.vo.Seller;
 
-	@Repository("sd")//bean µÄid
+	@Repository("sd")//bean ï¿½ï¿½id
 	public class SellerDaoImpl implements SellerDao {
 		@PersistenceContext(name="unitName")
 		private EntityManager em;
@@ -22,7 +22,7 @@ import com.mg.vo.Seller;
 
 		@Override
 		public Seller querySeller(String sellerName, String password) {
-			String jpql = "select s from Seller s where s.sellerName=:name and s.password=:pwd";
+			String jpql="select s from Seller s where s.sellerName=:name and s.password=:pwd";
 			@SuppressWarnings("unchecked")
 			List<Seller> list = em.createQuery(jpql)
 					.setParameter("name", sellerName)

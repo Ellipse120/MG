@@ -51,10 +51,6 @@ public class OrderMgrController {
 						
 						System.out.println(json);
 						//response.getWriter().print(json.toString());
-						//Double unitPrice = (Double) json.get("unitPrice");
-						//int amount = (int) json.get("amount");
-						//String orderName = (String) json.get("orderName");
-						
 						
 						FileWriter fw = null;
 						File f = new File("order.log");

@@ -37,6 +37,7 @@ public class ItemTest {
 	}
 	@Test
 	public void itemQueryTest(){
-		is.itemQuery(1);
+		Item it=is.itemQuery(1);
+		System.out.println(it);
 	}
 }

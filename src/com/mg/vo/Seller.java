@@ -63,11 +63,11 @@ public class Seller implements Serializable{
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getTypes() {
+	public String getType() {
 		return type;
 	}
-	public void setTypes(String types) {
-		this.type = types;
+	public void setType(String type) {
+		this.type = type;
 	}
 	public String getLicencefile() {
 		return licencefile;

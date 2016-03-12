@@ -1,5 +1,7 @@
 package test;
 
+import java.util.Date;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -17,14 +19,20 @@ public class SellerTest {
 	}
 	@Test
 	public  void testSellerLogin(){
-		Seller seller = ss.login("catalina", "123");
+		Seller seller = ss.login("damon", "123");
 		System.out.println(seller);
 	}
 	@Test
 	public  void testSellerRegist(){
 		Seller seller = new Seller();
-		seller.setSellerName("catalina");
+		seller.setSellerName("damon");
+		seller.setEmail("851590981@qq.com");
 		seller.setPassword("123");
+		seller.setPhone("10086");
+		seller.setAddress("nanjing");
+		seller.setDate(new Date());
+		seller.setType("KFC");
+		seller.setLicencefile("abc");
 		ss.regist(seller);
 	}
 }

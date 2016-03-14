@@ -127,4 +127,30 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
     <bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic">
         <constructor-arg value="topic01"/>
     </bean>
+    
+    <!-- 使用spring封装的Mail-sender -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    	<property name="host" value="${mail.host}"></property>
+    	<property name="username" value="${mail.username}"></property>
+    	<property name="password" value="${mail.password}"></property>
+    	<property name="javaMailProperties">
+    		<props>
+    			<prop key="mail.auth">${mail.auth}</prop>
+    			<prop key="mail.timeout">${mail.timeout}</prop>
+    		</props>
+    	</property>
+    </bean>
+    
+    <!-- MIME邮件服务类 配合jms发送邮件 -->
+
+    <bean id="jmstempMail" class="com.mail.JmsTemplateMail">
+       <property name="mailSender" ref="mailSender" />
+       <property name="freemarkerConfiguration" ref="freemarkerConfiguration"></property>
+    </bean>
+    
+    <!-- 用于生成HTML邮件内容的Freemarker配置 -->
+    <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+       <property name="templateLoaderPath" value="classpath:/mail" />
+    </bean>
+    
 </beans>

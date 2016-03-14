@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.mg.dao.SellerDao;
 import com.mg.vo.Seller;
 
-	@Repository("sd")//bean ��id
+	@Repository("sd")//bean的id
 	public class SellerDaoImpl implements SellerDao {
 		@PersistenceContext(name="unitName")
 		private EntityManager em;

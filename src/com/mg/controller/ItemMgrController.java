@@ -22,12 +22,12 @@ public class ItemMgrController {
 	
 	@Autowired(required=true)
 	private ItemService its;
-	//ÉÌÆ·ÉÏ¼Ü
+	//ï¿½ï¿½Æ·ï¿½Ï¼ï¿½
 	@RequestMapping("/itemPutOnShelves")
 	public int itemPutOnShelves(Item item,HttpServletRequest request)throws Exception{
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
+		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		
@@ -48,12 +48,12 @@ public class ItemMgrController {
 		
 	}
 	
-	//ÉÌÆ·ÏÂ¼Ü
+	//ï¿½ï¿½Æ·ï¿½Â¼ï¿½
 	@RequestMapping("/itemPullOffShelves")
 	public int itemPullOffShelves(Item item,HttpServletRequest request)throws Exception{
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
+		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		
@@ -74,12 +74,12 @@ public class ItemMgrController {
 		
 	}
 	
-	//ÉÌÆ·¸üÐÂ
+	//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/itemUpdate")
 	public int itemUpdate(Item item,HttpServletRequest request)throws Exception{
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
+		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		
@@ -100,7 +100,7 @@ public class ItemMgrController {
 		
 	}
 	
-	//ÉÌÆ·²éÑ¯
+	//ï¿½ï¿½Æ·ï¿½ï¿½Ñ¯
 		@RequestMapping("/itemQuery")
 		public String itemQuery(Item item,HttpServletRequest request)throws Exception{
 			

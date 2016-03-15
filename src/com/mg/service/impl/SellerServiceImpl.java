@@ -23,4 +23,18 @@ import com.mg.vo.Seller;
 		public int regist(Seller seller) {
 			return sd.addSeller(seller);
 		}
+		//如果用户名存在并且验证码正确，则授权更新密码操作
+		@Override
+		public boolean verify(Seller seller, String sendCode,String verifyCode) {
+			if(verifyCode.equalsIgnoreCase(sendCode))
+			return sd.sellerExist(seller.getSellerName());
+			else
+			return false;
+		}
+
+		@Override
+		public void updatePwd(Seller seller) {
+			sd.changePassword(seller);
+			
+		}
 }

@@ -86,6 +86,13 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 		proxy-target-class="false" /><!-- 有接口的基于代理 -->
 		
 	
+	<!-- 定义messageConverter属性，指定了发送消息时使用的消息转换bean，
+	这样，在直接发送Seller到JMS队列时，Spring会自动帮我们进行转换 -->
+	<bean id="sellerMessageConverter"
+	class="com.mg.util.SellerMessageConverter">
+	</bean>
+	
+	
 	<!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供 -->
 	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="tcp://120.27.108.61:61616" />
@@ -98,19 +105,20 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 		<property name="targetConnectionFactory" ref="targetConnectionFactory" />
 	</bean>
 
-	<!-- <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+	<bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
 		<property name="connectionFactory" ref="targetConnectionFactory" />
 		<property name="maxConnections" value="10" />
-		
-		<property name="expiryTimeout" value="10"></property>
-	</bean> -->
+		<property name="idleTimeout" value="50000"></property>
+		<property name="maximumActiveSessionPerConnection" value="300"></property>
+		<property name="expiryTimeout" value="10"></property><!-- 每隔 10s重连一次-->
+	</bean> 
 
 	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
-	<!-- <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-		这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
 		<property name="connectionFactory" ref="pooledConnectionFactory" />
-		<property name="defaultDestination" ref="queueDestination"></property>
-	</bean> -->
+		<property name="defaultDestination" ref="topicDestination"></property>
+	</bean> 
 	
     <!--这个是队列目的地，点对点的-->
     <bean id="queueItem" class="org.apache.activemq.command.ActiveMQQueue">
@@ -121,6 +129,11 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
     <bean id="queueOrder" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg>
             <value>order</value>
+        </constructor-arg>
+    </bean>
+    <bean id="queueUpdatePwd" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>updatePwd</value>
         </constructor-arg>
     </bean>
     <!--这个是主题目的地，一对多的-->
@@ -141,16 +154,7 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
     	</property>
     </bean>
     
-    <!-- MIME邮件服务类 配合jms发送邮件 -->
 
-    <bean id="jmstempMail" class="com.mail.JmsTemplateMail">
-       <property name="mailSender" ref="mailSender" />
-       <property name="freemarkerConfiguration" ref="freemarkerConfiguration"></property>
-    </bean>
-    
-    <!-- 用于生成HTML邮件内容的Freemarker配置 -->
-    <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
-       <property name="templateLoaderPath" value="classpath:/mail" />
-    </bean>
+   
     
 </beans>

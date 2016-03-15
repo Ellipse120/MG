@@ -27,7 +27,7 @@ public class OrderMgrController {
 	@RequestMapping("/orderShow")
 	public static void showOrder()throws Exception{
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
+		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		

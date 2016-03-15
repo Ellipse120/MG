@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -32,5 +33,30 @@ import com.mg.vo.Seller;
 				return null;
 			else
 			return list.get(0);
+		}
+
+		@Override
+		public void changePassword(Seller seller) {
+			String jpql = "update Seller s set s.password=:pwd where s.sellerName=:name";
+			@SuppressWarnings("unchecked")
+			Query query=em.createQuery(jpql);
+			query.setParameter("pwd", seller.getPassword());//新密码
+			query.setParameter("name", seller.getSellerName());
+			query.executeUpdate();
+			
+		}
+
+		@Override
+		public boolean sellerExist(String sellerName) {
+			String jpql="select s from Seller s where s.sellerName=:name ";
+			@SuppressWarnings("unchecked")
+			List<Seller> list = em.createQuery(jpql)
+					.setParameter("name", sellerName)
+					.getResultList();
+			if(list.isEmpty())
+				return false;
+			else
+			return true;
+			
 		}
 }

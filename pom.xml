@@ -120,11 +120,7 @@
 			<artifactId>commons-beanutils</artifactId>
 		<version>1.9.2</version>
 	</dependency>
-	<dependency>
-	<groupId>org.freemarker</groupId>
-		<artifactId>freemarker</artifactId>
-		<version>2.3.23</version>
-	</dependency>
+	
 	
 	<dependency>
 		<groupId>commons-pool</groupId>

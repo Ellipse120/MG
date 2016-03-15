@@ -28,12 +28,9 @@ public class ItemMgrController {
 	
 	@Resource(name="pooledConnectionFactory")
 	private PooledConnectionFactory factory;
-	@Resource(name="queueItemPutOn")
-	private ActiveMQQueue queueItemPutOn;
-	@Resource(name="queueItemPutOff")
-	private ActiveMQQueue queueItemPutOff;
-	@Resource(name="queueItemUpdate")
-	private ActiveMQQueue queueItemUpdate;
+	@Resource(name="queueItem")
+	private ActiveMQQueue queueItem;
+	
 	
 	//商品上架
 	@RequestMapping("/itemPutOnShelves")
@@ -43,7 +40,7 @@ public class ItemMgrController {
 		conn.start();
 		
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-		MessageProducer producer = sen.createProducer(queueItemPutOn);
+		MessageProducer producer = sen.createProducer(queueItem);
 		
 		int flag = its.itemPutOnShelves(item);
 		if(flag>0){
@@ -66,7 +63,7 @@ public class ItemMgrController {
 		conn.start();
 		
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-		MessageProducer producer = sen.createProducer(queueItemPutOff);
+		MessageProducer producer = sen.createProducer(queueItem);
 		
 		int flag = its.itemPullOffShelves(item.getItemId());
 		if(flag>0){
@@ -89,7 +86,7 @@ public class ItemMgrController {
 		conn.start();
 		
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-		MessageProducer producer = sen.createProducer(queueItemUpdate);
+		MessageProducer producer = sen.createProducer(queueItem);
 		
 		int flag = its.itemUpdate(item);
 		if(flag>0){

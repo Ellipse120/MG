@@ -1,86 +1,67 @@
 package com.mail;
 
-import java.io.IOException;
-import java.util.List;
+import java.text.MessageFormat;
 import java.util.Properties;
-import javax.mail.Authenticator;
-import javax.mail.Message.RecipientType;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
+import javax.annotation.Resource;
+import javax.jms.Connection;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageConsumer;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
 import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.internet.MimeUtility;
 
-/**
- * 
- * 发邮件
- */
+import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.pool.PooledConnectionFactory;
+import org.json.JSONObject;
+import org.springframework.stereotype.Component;
+@Component
 public class SendEmail {
-	public static Session createSession(String host, final String username, final String password) {
-		Properties prop = new Properties();
-		prop.setProperty("mail.host", host);// 指定主机
-		prop.setProperty("mail.auth", "true");// 指定验证为true
-
-		// 创建验证器
-		Authenticator auth = new Authenticator() {
-			public PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
-			}
-		};
-		
-		// 获取session对象
-		return Session.getInstance(prop, auth);
-	}
+	@Resource(name="pooledConnectionFactory")
+	private PooledConnectionFactory factory;
+	@Resource(name="queueUpdatePwd")
+	private ActiveMQQueue queueUpdatePwd;
 	
-	/**
-	 * 发送指定的邮件
-	 * 
-	 * @param mail
-	 */
-	public static void send(Session session, final Email mail) throws MessagingException,
-			IOException {
-
-		MimeMessage msg = new MimeMessage(session);// 创建邮件对象
-		msg.setFrom(new InternetAddress(mail.getFrom()));// 设置发件人
-		msg.addRecipients(RecipientType.TO, mail.getToAddress());// 设置收件人
-
-		// 设置抄送
-		String cc = mail.getCcAddress();
-		if (!cc.isEmpty()) {
-			msg.addRecipients(RecipientType.CC, cc);
-		}
+	public void mailConsumer() throws JMSException{
+		Connection conn = factory.createConnection();
+		conn.start();
 		
-		// 设置暗送
-		String bcc = mail.getBccAddress();
-		if (!bcc.isEmpty()) {
-			msg.addRecipients(RecipientType.BCC, bcc);
-		}
+		javax.jms.Session sen = conn.createSession(false, javax.jms.Session.CLIENT_ACKNOWLEDGE);
+		MessageConsumer consumer = sen.createConsumer(queueUpdatePwd);
+		consumer.setMessageListener(new MessageListener() {
 
-		msg.setSubject(mail.getSubject());// 设置主题
+			@Override
+			public void onMessage(Message msg) {
 
-		MimeMultipart parts = new MimeMultipart();// 创建部件集对象
-
-		MimeBodyPart part = new MimeBodyPart();// 创建一个部件
-		part.setContent(mail.getContent(), "text/html;charset=utf-8");// 设置邮件文本内容
-		parts.addBodyPart(part);// 把部件添加到部件集中
+				TextMessage tm = (TextMessage) msg;
 		
-		// 添加附件
-		List<AttachBean> attachBeanList = mail.getAttachs();// 获取所有附件
-		if (attachBeanList != null) {
-			for (AttachBean attach : attachBeanList) {
-				MimeBodyPart attachPart = new MimeBodyPart();// 创建一个部件
-				attachPart.attachFile(attach.getFile());// 设置附件文件
-				attachPart.setFileName(MimeUtility.encodeText(attach
-						.getFileName()));// 设置附件文件名
-				parts.addBodyPart(attachPart);
+					try {
+						String s = tm.getText();
+						JSONObject json = new JSONObject(s);
+						String email = json.getString("email");
+						String sendCode = json.getString("sendCode");
+						
+						Properties props = new Properties();
+						props.load(this.getClass().getClassLoader().getResourceAsStream("email.properties"));
+						String host = props.getProperty("host");
+						String uname = props.getProperty("uname");
+						String pwd = props.getProperty("pwd");
+						String from = props.getProperty("from");
+						String to = email;
+						String subject = props.getProperty("subject");
+						String content = props.getProperty("content");
+						content = MessageFormat.format(content, sendCode);
+						Session session = MakeEmail.createSession(host, uname, pwd);
+						Email em = new Email(from,to,subject,content);
+						
+						MakeEmail.send(session, em);
+					} catch (Exception e) {
+						System.out.println("Email is failed to send....");
+					}
+					
 			}
-		}
-
-		msg.setContent(parts);// 给邮件设置内容
-		Transport.send(msg);// 发邮件
+		});
+		
+		
 	}
 }

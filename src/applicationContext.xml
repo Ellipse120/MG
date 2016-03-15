@@ -121,21 +121,12 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	</bean> 
 	
     <!--这个是队列目的地，点对点的-->
-    <bean id="queueItemPutOn" class="org.apache.activemq.command.ActiveMQQueue">
+    <bean id="queueItem" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg>
-            <value>itemPutOn</value>
+            <value>item</value>
         </constructor-arg>
     </bean>
-    <bean id="queueItemPutOff" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg>
-            <value>itemPutOff</value>
-        </constructor-arg>
-    </bean>
-    <bean id="queueItemUpdate" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg>
-            <value>itemUpdate</value>
-        </constructor-arg>
-    </bean>
+    
     <bean id="queueOrder" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg>
             <value>order</value>

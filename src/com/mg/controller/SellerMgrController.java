@@ -1,7 +1,6 @@
 package com.mg.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -9,19 +8,28 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
-import javax.mail.Session;
+import javax.annotation.Resource;
+import javax.jms.Connection;
+import javax.jms.JMSException;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.pool.PooledConnectionFactory;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mail.Email;
+import com.mail.MakeEmail;
 import com.mail.SendEmail;
 import com.mg.service.SellerService;
 import com.mg.util.CommonUtil;
@@ -31,6 +39,11 @@ import com.mg.vo.Seller;
 public class SellerMgrController {
 	@Autowired(required = true)
 	private SellerService ss;
+	
+	@Resource(name="pooledConnectionFactory")
+	private PooledConnectionFactory factory;
+	@Resource(name="queueUpdatePwd")
+	private ActiveMQQueue queueUpdatePwd;
 
 	@RequestMapping("common/sellerLogin")
 	public String login(String sellerName, String password,
@@ -83,32 +96,26 @@ public class SellerMgrController {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	@RequestMapping(value="common/updatePwd",method=RequestMethod.POST)
-	public String updatePwd(Seller seller,String verifyCode){
+	public String updatePwd(Seller seller,String verifyCode) throws JMSException{
+		
+		Connection conn = factory.createConnection();
+		conn.start();
+		
+		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+		MessageProducer producer = sen.createProducer(queueUpdatePwd);
+		
 		String uuid = UUID.randomUUID().toString();
 		String sendCode = uuid.substring(0, 6);
 		System.out.println(sendCode);
-		
-		/*
-		 * send email
-		 */
+		JSONObject json = new JSONObject();
 		try {
-			Properties props = new Properties();
-			props.load(this.getClass().getClassLoader().getResourceAsStream("email.properties"));
-			String host = props.getProperty("host");
-			String uname = props.getProperty("uname");
-			String pwd = props.getProperty("pwd");
-			String from = props.getProperty("from");
-			String to = seller.getEmail();
-			String subject = props.getProperty("subject");
-			String content = props.getProperty("content");
-			content = MessageFormat.format(content, sendCode);
-			Session session = SendEmail.createSession(host, uname, pwd);
-			Email email = new Email(from,to,subject,content);
-			
-			SendEmail.send(session, email);
-		} catch (Exception e) {
-			System.out.println("Email is failed to send....");
+			json.put("sendCode", sendCode);
+			json.put("email", seller.getEmail());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		boolean flag = false;
 		flag = ss.verify(seller,sendCode,verifyCode);

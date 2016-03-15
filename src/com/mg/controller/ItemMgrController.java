@@ -1,5 +1,6 @@
 package com.mg.controller;
 
+import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -8,6 +9,8 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.pool.PooledConnectionFactory;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -22,18 +25,25 @@ public class ItemMgrController {
 	
 	@Autowired(required=true)
 	private ItemService its;
-	//��Ʒ�ϼ�
+	
+	@Resource(name="pooledConnectionFactory")
+	private PooledConnectionFactory factory;
+	@Resource(name="queueItemPutOn")
+	private ActiveMQQueue queueItemPutOn;
+	@Resource(name="queueItemPutOff")
+	private ActiveMQQueue queueItemPutOff;
+	@Resource(name="queueItemUpdate")
+	private ActiveMQQueue queueItemUpdate;
+	
+	//商品上架
 	@RequestMapping("/itemPutOnShelves")
 	public int itemPutOnShelves(Item item,HttpServletRequest request)throws Exception{
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		
-		Destination queue = (Destination) context.getBean("queueItem");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-		MessageProducer producer = sen.createProducer(queue);
+		MessageProducer producer = sen.createProducer(queueItemPutOn);
 		
 		int flag = its.itemPutOnShelves(item);
 		if(flag>0){
@@ -48,18 +58,15 @@ public class ItemMgrController {
 		
 	}
 	
-	//��Ʒ�¼�
+	//商品下架
 	@RequestMapping("/itemPullOffShelves")
 	public int itemPullOffShelves(Item item,HttpServletRequest request)throws Exception{
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		
-		Destination queue = (Destination) context.getBean("queueDestination");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-		MessageProducer producer = sen.createProducer(queue);
+		MessageProducer producer = sen.createProducer(queueItemPutOff);
 		
 		int flag = its.itemPullOffShelves(item.getItemId());
 		if(flag>0){
@@ -74,18 +81,15 @@ public class ItemMgrController {
 		
 	}
 	
-	//��Ʒ����
+	//商品更新
 	@RequestMapping("/itemUpdate")
 	public int itemUpdate(Item item,HttpServletRequest request)throws Exception{
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		
-		Destination queue = (Destination) context.getBean("queueDestination");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-		MessageProducer producer = sen.createProducer(queue);
+		MessageProducer producer = sen.createProducer(queueItemUpdate);
 		
 		int flag = its.itemUpdate(item);
 		if(flag>0){
@@ -100,7 +104,7 @@ public class ItemMgrController {
 		
 	}
 	
-	//��Ʒ��ѯ
+	//查询商品
 		@RequestMapping("/itemQuery")
 		public String itemQuery(Item item,HttpServletRequest request)throws Exception{
 			

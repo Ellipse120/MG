@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
+import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -14,6 +15,8 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.pool.PooledConnectionFactory;
 import org.json.JSONObject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -24,16 +27,18 @@ import com.mg.vo.Order;
 
 @Controller
 public class OrderMgrController {
+	@Resource(name="pooledConnectionFactory")
+	private PooledConnectionFactory factory;
+	@Resource(name="queueOrder")
+	private ActiveMQQueue queueOrder;
+	
 	@RequestMapping("/orderShow")
-	public static void showOrder()throws Exception{
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
+	public void showOrder()throws Exception{
 		Connection conn = factory.createConnection();
 		conn.start();
 		
-		Destination queue = (Destination) context.getBean("queueOrder");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-		MessageConsumer consumer = sen.createConsumer(queue);
+		MessageConsumer consumer = sen.createConsumer(queueOrder);
 		
 		consumer.setMessageListener(new MessageListener() {
 
@@ -71,7 +76,4 @@ public class OrderMgrController {
 
 	}
 	
-	public static void main(String[] args) throws Exception {
-		showOrder();
-	}
 }

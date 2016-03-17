@@ -1,9 +1,7 @@
 package com.mail;
 
-import java.text.MessageFormat;
 import java.util.Properties;
 
-import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -14,16 +12,17 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 import javax.mail.Session;
 
-import org.apache.activemq.command.ActiveMQQueue;
-import org.apache.activemq.pool.PooledConnectionFactory;
-import org.jboss.jandex.Main;
 import org.json.JSONObject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
-
+/**
+ * 从MQ上接收消息（邮箱和验证码），然后将验证码发到此用户邮箱中。
+ * @author JFD
+ *
+ */
 public class SendEmail {
 	
+	@SuppressWarnings("resource")
 	public static void mailConsumer() throws JMSException{
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"applicationContext.xml");
@@ -47,9 +46,8 @@ public class SendEmail {
 						JSONObject json = new JSONObject(s);
 						String email = json.getString("email");
 						String sendCode = json.getString("sendCode");
-						System.out.println(sendCode);
-						System.out.println(email);
-						
+						System.out.println("消费成功： "+email+" "+sendCode);
+						//创建邮件
 						Properties props = new Properties();
 						props.load(this.getClass().getClassLoader().getResourceAsStream("email.properties"));
 						String host = props.getProperty("mail.host");

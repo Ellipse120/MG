@@ -1,11 +1,9 @@
 package com.mg.controller;
 
 import java.io.File;
-import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -13,6 +11,7 @@ import javax.jms.Connection;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
+import javax.jms.TextMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -28,9 +27,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mail.Email;
-import com.mail.MakeEmail;
-import com.mail.SendEmail;
 import com.mg.service.SellerService;
 import com.mg.util.CommonUtil;
 import com.mg.vo.Seller;
@@ -97,7 +93,6 @@ public class SellerMgrController {
 		}
 	}
 	
-	@SuppressWarnings("unused")
 	@RequestMapping(value="common/updatePwd",method=RequestMethod.POST)
 	public String updatePwd(Seller seller,String verifyCode) throws JMSException{
 		Connection conn = factory.createConnection();
@@ -110,9 +105,12 @@ public class SellerMgrController {
 		sendCode = uuid.substring(0, 6);
 		System.out.println("生成的验证码: "+sendCode);
 		JSONObject json = new JSONObject();
+		
 		try {
 			json.put("sendCode", sendCode);
 			json.put("email", seller.getEmail());
+			TextMessage msg =  sen.createTextMessage(json.toString());
+			producer.send(msg);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>重置密码</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+<form class="form-horizontal" id="form1"  method="post" action="updatePwd">
+	
+  <div class="form-group">
+    <input type="email" class="form-control" name="email" placeholder="Email">
+  </div>
+  
+  <input type="submit" value="获取验证码" onclick="verify">
+  </form>
+  
+  
+  <form id="form2"  method="post" action="updatePwd1">
+  <div class="form-group">
+    <input type="email" class="form-control" name="email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <div class="form-group">
+      <input type="text" class="form-control" name="verifyCode" placeholder="VerifyCode">
+      
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword3">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="NewPassword">
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword3">NewPassword</label>
+    <input type="password" class="form-control" name="newpassword" placeholder="NewPassword">
+  </div>
+  
+  
+  <button type="submit" class="btn btn-primary">保存</button>
+  
+</form>
+
+ 
+</body>
+</html>

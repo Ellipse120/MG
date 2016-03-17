@@ -9,7 +9,7 @@ public interface SellerDao {
 
 	public void changePassword(Seller seller);
 	
-	public boolean sellerExist(String sellerName);
+	public boolean sellerExist(String email);
 
 	
 }

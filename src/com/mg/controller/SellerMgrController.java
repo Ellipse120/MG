@@ -39,6 +39,7 @@ import com.mg.vo.Seller;
 public class SellerMgrController {
 	@Autowired(required = true)
 	private SellerService ss;
+	private String sendCode;
 	
 	@Resource(name="pooledConnectionFactory")
 	private PooledConnectionFactory factory;
@@ -51,7 +52,7 @@ public class SellerMgrController {
 		System.out.println(sellerName);
 		System.out.println(password);
 		
-		Seller seller = ss.login(sellerName, password);
+		Seller seller = ss.login("damon", "123");
 		System.out.println(seller);
 		if (seller != null) {
 			HttpSession session = request.getSession();
@@ -99,7 +100,6 @@ public class SellerMgrController {
 	@SuppressWarnings("unused")
 	@RequestMapping(value="common/updatePwd",method=RequestMethod.POST)
 	public String updatePwd(Seller seller,String verifyCode) throws JMSException{
-		
 		Connection conn = factory.createConnection();
 		conn.start();
 		
@@ -107,25 +107,29 @@ public class SellerMgrController {
 		MessageProducer producer = sen.createProducer(queueUpdatePwd);
 		
 		String uuid = UUID.randomUUID().toString();
-		String sendCode = uuid.substring(0, 6);
-		System.out.println(sendCode);
+		sendCode = uuid.substring(0, 6);
+		System.out.println("生成的验证码: "+sendCode);
 		JSONObject json = new JSONObject();
 		try {
 			json.put("sendCode", sendCode);
 			json.put("email", seller.getEmail());
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return "redirect:/common/updatepwd.html";
+		
+	}
+	@RequestMapping(value="common/updatePwd1",method=RequestMethod.POST)
+	public String updatePwd1(Seller seller,String verifyCode){
+		System.out.println("传过来的： "+sendCode);
 		boolean flag = false;
 		flag = ss.verify(seller,sendCode,verifyCode);
 		if(flag==true){
 			ss.updatePwd(seller);
-			return "common/updatePwdSuc";
+			return "redirect:/updatePwdSuc.html";
 		}else{
-			return "common/sellerLogin";
+			return "common/sLogin";
 		}
-		
-		
 	}
 }

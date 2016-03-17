@@ -37,21 +37,21 @@ import com.mg.vo.Seller;
 
 		@Override
 		public void changePassword(Seller seller) {
-			String jpql = "update Seller s set s.password=:pwd where s.sellerName=:name";
+			String jpql = "update Seller s set s.password=:pwd where s.email=:email";
 			@SuppressWarnings("unchecked")
 			Query query=em.createQuery(jpql);
 			query.setParameter("pwd", seller.getPassword());//新密码
-			query.setParameter("name", seller.getSellerName());
+			query.setParameter("email", seller.getEmail());
 			query.executeUpdate();
 			
 		}
 
 		@Override
-		public boolean sellerExist(String sellerName) {
-			String jpql="select s from Seller s where s.sellerName=:name ";
+		public boolean sellerExist(String email) {
+			String jpql="select s from Seller s where s.email=:email ";
 			@SuppressWarnings("unchecked")
 			List<Seller> list = em.createQuery(jpql)
-					.setParameter("name", sellerName)
+					.setParameter("email", email)
 					.getResultList();
 			if(list.isEmpty())
 				return false;

@@ -27,12 +27,13 @@ import com.mg.vo.Seller;
 		@Override
 		public boolean verify(Seller seller, String sendCode,String verifyCode) {
 			if(verifyCode.equalsIgnoreCase(sendCode))
-			return sd.sellerExist(seller.getSellerName());
+			return sd.sellerExist(seller.getEmail());
 			else
 			return false;
 		}
 
 		@Override
+		@Transactional
 		public void updatePwd(Seller seller) {
 			sd.changePassword(seller);
 			

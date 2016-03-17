@@ -25,8 +25,8 @@ public class SellerTest {
 	@Test
 	public  void testSellerRegist(){
 		Seller seller = new Seller();
-		seller.setSellerName("damon");
-		seller.setEmail("851590981@qq.com");
+		seller.setSellerName("tom");
+		seller.setEmail("jfd1@jfd");
 		seller.setPassword("123");
 		seller.setPhone("10086");
 		seller.setAddress("nanjing");

@@ -16,18 +16,14 @@
         <div>
     <form id="account-login-form" method="post" action="sellerLogin" enctype="multipart/form-data">
   <div class="form-group">
-    <label for="exampleInputEmail1">sellerName</label>
+    <label for="exampleInputEmail1">SellerName</label>
     <input type="text" class="form-control" name="sellerName" id="exampleInputEmail2" placeholder="sellerName">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="password">
   </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="licencefile" name="licencefile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
+  
   <div class="checkbox">
     <label>
       <input type="checkbox"> Check me out
@@ -58,6 +54,10 @@
     <input type="text" class="form-control" id="reUserName" name="sellerName" placeholder="UserName">
   </div>
   <div class="form-group">
+    <label for="exampleInputEmail1">邮箱</label>
+    <input type="email" class="form-control" id="reEmail" name="email" placeholder="email">
+  </div>
+  <div class="form-group">
     <label for="exampleInputPassword1">密码</label>
     <input type="password" class="form-control" id="rePassword" name="password" placeholder="Password">
   </div>
@@ -69,14 +69,26 @@
     <label for="exampleInputPassword1">手机号</label>
     <input type="text" class="form-control" id="rePhone" name="phoneNum" placeholder="PhoneNumber" >
   </div>
-
-            
+	<div class="form-group">
+    <label for="exampleInputEmail1">注册时间</label>
+    <input type="date" class="form-control" id="reDate" name="date" placeholder="Date">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">经营类型</label>
+    <input type="text" class="form-control" id="reType" name="type" placeholder="Type">
+  </div>
+     <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="licencefile" name="licencefile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>       
   <div class="checkbox">
     <label>
       <input type="checkbox"> Check me out
     </label>
   </div>
   <button type="submit" class="btn btn-default" onclick="reonClik();">Submit</button>
+  
 </form>
 
       </div>
@@ -122,7 +134,7 @@ $.fn.serializeObject = function()
     })
 }  
       </script>
-        
+        <a href="updatepwd.html">修改密码</a>
     </body>
 </html>
       

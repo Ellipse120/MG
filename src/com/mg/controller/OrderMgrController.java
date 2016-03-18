@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mg.vo.Order;
+import com.mg.vo.User;
 
 @Controller
 public class OrderMgrController {
@@ -33,6 +34,7 @@ public class OrderMgrController {
 	private PooledConnectionFactory factory;
 	@Resource(name="queueOrder")
 	private ActiveMQQueue queueOrder;
+	Order or;
 	
 	@RequestMapping("/orderShow")
 	@ResponseBody
@@ -54,9 +56,29 @@ public class OrderMgrController {
 						String s = tm.getText();
 						
 						JSONObject json = new JSONObject(s);
-						
 						System.out.println(json);
 						
+						 or = new Order();
+						String orderNum = json.getString("orderNum"); 
+						String orderInfo = json.getString("orderInfo");
+						String uName = json.getString("uName");
+						String address = json.getString("address");
+						String phoneNum = json.getString("10068");
+						String orderStatus = json.getString("orderStatus");
+						
+						User user  = new User();
+						user.setUserName(uName);
+						user.setAddress(address);
+						user.setPhoneNum(phoneNum);
+						
+						or.setOrderNum(orderNum);
+						or.setOrderInfo(orderInfo);
+						or.setOrderStatus(true);
+						or.setUser(user);
+						
+						/*
+						 * 将订单存到日志
+						 */
 						FileWriter fw = null;
 						File f = new File("order.log");
 						
@@ -73,7 +95,7 @@ public class OrderMgrController {
 					
 			}
 		});
-		return order;
+		return or;
 
 	}
 	

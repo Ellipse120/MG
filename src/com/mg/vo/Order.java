@@ -11,12 +11,28 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer orderId;
-	private String orderNum;
-	private String orderInfo;
-	private int amount;
-	private Double settle;
-	private boolean orderStatus;
+	private String orderNum;//订单
+	private String orderInfo;//订单信息
+	private int amount;//购买数量
+	private Double settle;//总价
+	private boolean orderStatus;//订单状态
+	private String address;//收货地址
+	private User user;
 	
+	
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getOrderNum() {
 		return orderNum;
 	}

@@ -21,7 +21,9 @@ import org.json.JSONObject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mg.vo.Order;
 
@@ -33,7 +35,8 @@ public class OrderMgrController {
 	private ActiveMQQueue queueOrder;
 	
 	@RequestMapping("/orderShow")
-	public void showOrder()throws Exception{
+	@ResponseBody
+	public Order showOrder(@RequestBody Order order)throws Exception{
 		Connection conn = factory.createConnection();
 		conn.start();
 		
@@ -50,12 +53,9 @@ public class OrderMgrController {
 					try {
 						String s = tm.getText();
 						
-						System.out.println(s);
-						
 						JSONObject json = new JSONObject(s);
 						
 						System.out.println(json);
-						//response.getWriter().print(json.toString());
 						
 						FileWriter fw = null;
 						File f = new File("order.log");
@@ -73,6 +73,7 @@ public class OrderMgrController {
 					
 			}
 		});
+		return order;
 
 	}
 	

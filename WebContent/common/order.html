@@ -8,14 +8,25 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     
-    <style>
-            
-    </style>
+  <script src="js/jquery-1.11.1.min.js">
+  
+  </script>  
+  <script type="text/javascript">
+  
+	  $(document).ready(function(){
+		  $("#btn1").click(function(){
+		    var str = $('#b1').load('orderShow');
+		    alert(str);
+		    //alert(JSON.parse(str));
+		  })
+		})
+  
+  </script>
         
     </head>
     <body>
-<form method="post" action="orderShow">
-<button type="button" class="btn btn--inverse">刷新订单</button>
+
+<button type="button" id="btn1" class="btn btn--inverse" >刷新订单</button>
 
 <button type="button" class="btn btn-primary">管理商品</button>
 
@@ -47,7 +58,7 @@
         <td class="info">联系电话</td>
     </tr>
     <tr class="success">
-        <td class="active">col1</td>
+        <td class="active"><div id="b1">col1</div></td>
         <td class="success">col2</td>
         <td class="warning">col3</td>
         <td class="danger">col4</td>
@@ -77,8 +88,8 @@
 
 
 </table></div>
-</form>    
-    </body>
+  
+</body>
 
 </html>
 

@@ -6,23 +6,20 @@ import java.io.FileWriter;
 
 import javax.annotation.Resource;
 import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.pool.PooledConnectionFactory;
 import org.json.JSONObject;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mg.vo.Order;
@@ -35,10 +32,11 @@ public class OrderMgrController {
 	@Resource(name="queueOrder")
 	private ActiveMQQueue queueOrder;
 	Order or;
+	JSONObject json;
 	
-	@RequestMapping("/orderShow")
+	@RequestMapping(value="common/orderShow",method=RequestMethod.GET)
 	@ResponseBody
-	public Order showOrder(@RequestBody Order order)throws Exception{
+	public Order showOrder(HttpServletRequest request)throws Exception{
 		Connection conn = factory.createConnection();
 		conn.start();
 		
@@ -55,7 +53,7 @@ public class OrderMgrController {
 					try {
 						String s = tm.getText();
 						
-						JSONObject json = new JSONObject(s);
+						json = new JSONObject(s);
 						System.out.println(json);
 						
 						 or = new Order();
@@ -63,13 +61,13 @@ public class OrderMgrController {
 						String orderInfo = json.getString("orderInfo");
 						String uName = json.getString("uName");
 						String address = json.getString("address");
-						String phoneNum = json.getString("10068");
-						String orderStatus = json.getString("orderStatus");
+						//String phoneNum = json.getString("phoneNum");
+						//String orderStatus = json.getString("orderStatus");
 						
 						User user  = new User();
 						user.setUserName(uName);
 						user.setAddress(address);
-						user.setPhoneNum(phoneNum);
+						user.setPhoneNum("10086");
 						
 						or.setOrderNum(orderNum);
 						or.setOrderInfo(orderInfo);

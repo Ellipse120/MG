@@ -53,7 +53,7 @@ public class SellerMgrController {
 		if (seller != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("sellerName", sellerName);
-			return "redirect:/registSuc.html";
+			return "redirect:/common/order.html";
 		} else {
 			return "common/sellerLogin";
 		}

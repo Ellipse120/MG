@@ -18,9 +18,22 @@ public class Order {
 	private boolean orderStatus;//订单状态
 	private String address;//收货地址
 	private User user;
+	private String phone;
+	private String uName;
 	
 	
-	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getuName() {
+		return uName;
+	}
+	public void setuName(String uName) {
+		this.uName = uName;
+	}
 	public User getUser() {
 		return user;
 	}

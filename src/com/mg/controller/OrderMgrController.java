@@ -61,18 +61,20 @@ public class OrderMgrController {
 						String orderInfo = json.getString("orderInfo");
 						String uName = json.getString("uName");
 						String address = json.getString("address");
-						//String phoneNum = json.getString("phoneNum");
+						String phoneNum = json.getString("phoneNum");
 						//String orderStatus = json.getString("orderStatus");
 						
-						User user  = new User();
+						/*User user  = new User();
 						user.setUserName(uName);
 						user.setAddress(address);
-						user.setPhoneNum("10086");
+						user.setPhoneNum(phoneNum);*/
 						
 						or.setOrderNum(orderNum);
 						or.setOrderInfo(orderInfo);
 						or.setOrderStatus(true);
-						or.setUser(user);
+						or.setuName(uName);
+						or.setAddress(address);
+						or.setPhone(phoneNum);
 						
 						/*
 						 * 将订单存到日志

@@ -11,7 +11,11 @@
 
     <script src="js/jquery-1.11.1.min.js">
     </script>
-    <script src="js/extendPagination.js"></script>
+    
+    
+    
+   
+    
     <script type="text/javascript">
         $(document).ready(function () {
             $("#btn1").click(function () {
@@ -66,6 +70,13 @@
         })
     </script>
 
+	 <script type="text/javascript">
+        $(document).ready(function() {
+	   $("#Pagination").pagination("5");
+        });
+    </script>
+		
+
 </head>
 
 <body>
@@ -103,50 +114,21 @@
                 <td class="info" id="phoneNum">联系电话</td>
             </tr>
 
-
-
-
         </table>
+         <div class="pages">
+            <div id="Pagination"></div>
+                <div class="searchPage">
+                    <span class="page-sum">共<strong class="allPage">1</strong>页</span>
+                    <span class="page-go">跳转<input type="text">页</span>
+                    <a href="javascript:;" class="page-btn">GO</a>
+                </div>
+        </div>
+        
     </div>
-    <div id="mainContent"></div>
-    <div id="callBackPager"></div>
-
-    <script type="text/javascript">
-        function callBackPagination() {
-            var totalCount = Number($('#totalCount1').val()) || 252,
-                showCount = $('#showCount1').val(),
-                limit = Number($('#limit').val()) || 10;
-            createTable(1, limit, totalCount);
-            $('#callBackPager').extendPagination({
-                totalCount: totalCount,
-                showCount: showCount,
-                limit: limit,
-                callback: function (curr, limit, totalCount) {
-                    createTable(curr, limit, totalCount);
-                }
-            });
-        }
-
-        function createTable(currPage, limit, total) {
-            var html = [],
-                showNum = limit;
-            if (total - (currPage * limit) < 0) showNum = total - ((currPage - 1) * limit);
-            html.push(' <table class="table table-hover piece" style="margin-left: 0;">');
-            html.push(' <caption>悬停表格(' + total + ')</caption>');
-            html.push(' <thead><tr><th>名称</th><th>城市</th><th>密码</th></tr></thead><tbody>');
-            for (var i = 1; i <= showNum; i++) {
-                html.push('<tr><td>name' + currPage + '页_' + i + '</td>');
-                html.push('<td>city' + currPage + '页_' + i + '</td>');
-                html.push('<td>pwd' + currPage + '页_' + i + '</td>');
-                html.push('</tr>');
-            }
-            html.push('</tbody></table>');
-            var mainObj = $('#mainContent');
-            mainObj.empty();
-            mainObj.html(html.join(''));
-        }
-    </script>
-
+   
+  
+<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.pagination.js"></script>
 </body>
 
 </html>

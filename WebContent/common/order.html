@@ -15,9 +15,10 @@
   
 	  $(document).ready(function(){
 		  $("#btn1").click(function(){
-			  var str = $('#b1').load('orderShow');
+			  var str = $('#b1').load('orderShow').text();
+			  var jsonobj = evel('(' + str + ')');
 			  
-		     //alert(str);
+		     
 		  })
 		})
   

@@ -28,27 +28,32 @@
                     $('#orderInfo').append(json.orderInfo);
                     $('#address').append(json.address);
                     $('#phoneNum').append(json.phone); */
+                    
                     var rand = Math.floor(Math.random() * 11);
                     var className = ["active", "success", "warning", "info", "danger"];
-
+                    for(var i=0;i<json.length;i++){
                     var table = document.getElementById("myTable");
                     var row = table.insertRow(-1);
-
-                    var cell_orderNum = row.insertCell(-1);
-                    cell_orderNum.className = className[rand % 5];
-                    cell_orderNum.innerHTML = json.orderNum;
-                    var cell_uName = row.insertCell(-1);
-                    cell_uName.className = className[rand % 5];
-                    cell_uName.innerHTML = json.uName;
-                    var cell_orderInfo = row.insertCell(-1);
-                    cell_orderInfo.className = className[rand % 5];
-                    cell_orderInfo.innerHTML = json.orderInfo;
-                    var cell_address = row.insertCell(-1);
-                    cell_address.className = className[rand % 5];
-                    cell_address.innerHTML = json.address;
-                    var cell_phoneNum = row.insertCell(-1);
-                    cell_phoneNum.className = className[rand % 5];
-                    cell_phoneNum.innerHTML = json.phone;
+                    
+                   
+                    	
+                    	var cell_orderNum = row.insertCell(-1);
+                        cell_orderNum.className = className[rand % 5];
+                        cell_orderNum.innerHTML = json[i].orderNum;
+                        var cell_uName = row.insertCell(-1);
+                        cell_uName.className = className[rand % 5];
+                        cell_uName.innerHTML = json[i].uName;
+                        var cell_orderInfo = row.insertCell(-1);
+                        cell_orderInfo.className = className[rand % 5];
+                        cell_orderInfo.innerHTML = json[i].orderInfo;
+                        var cell_address = row.insertCell(-1);
+                        cell_address.className = className[rand % 5];
+                        cell_address.innerHTML = json[i].address;
+                        var cell_phoneNum = row.insertCell(-1);
+                        cell_phoneNum.className = className[rand % 5];
+                        cell_phoneNum.innerHTML = json[i].phone;
+                    }
+                    
 
 
 
@@ -127,7 +132,7 @@
     </div>
    
   
-<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.pagination.js"></script>
 </body>
 

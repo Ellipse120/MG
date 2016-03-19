@@ -3,6 +3,8 @@ package com.mg.controller;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.jms.Connection;
@@ -33,10 +35,10 @@ public class OrderMgrController {
 	private ActiveMQQueue queueOrder;
 	Order or;
 	JSONObject json;
-	
+	List<Order> list =new ArrayList<Order>();;
 	@RequestMapping(value="common/orderShow",method=RequestMethod.GET)
 	@ResponseBody
-	public Order showOrder(HttpServletRequest request)throws Exception{
+	public List<Order> showOrder(HttpServletRequest request)throws Exception{
 		Connection conn = factory.createConnection();
 		conn.start();
 		
@@ -76,6 +78,9 @@ public class OrderMgrController {
 						or.setAddress(address);
 						or.setPhone(phoneNum);
 						
+						
+						list.add(or);
+						
 						/*
 						 * 将订单存到日志
 						 */
@@ -95,8 +100,10 @@ public class OrderMgrController {
 					
 			}
 		});
-		return or;
-
+		
+		System.out.println(list.size());
+		return list;
+		
 	}
 	
 }

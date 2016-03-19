@@ -15,10 +15,35 @@
   
 	  $(document).ready(function(){
 		  $("#btn1").click(function(){
-			  var str = $('#b1').load('orderShow').text();
-			  var jsonobj = evel('(' + str + ')');
+			  //var str = $('#b1').load('orderShow').text();
+			$.getJSON("orderShow","lu1",function(json){
+				
+                    /* $('#test').append('<p>' + json.uName + '</p>');
+                    $('#orderNum').append(json.orderNum);
+                    $('#uName').append(json.uName);
+                    $('#orderInfo').append(json.orderInfo);
+                    $('#address').append(json.address);
+                    $('#phoneNum').append(json.phone); */
+				var table = document.getElementById("myTable");
+                var row = table.insertRow(0);
+                var cell1 = row.insertCell(0);
+					
+    		     
+                    
+            });
 			  
-		     
+		
+
+		   /*  var table = $("<table>");
+            var tr = $("<tr>");
+            tr.append($("<td>").text(json.orderNum));
+            tr.append($("<td>").text(json.uName));
+            tr.append($("<td>").text(json.orderInfo));
+            tr.append($("<td>").text(json.address));
+            tr.append($("<td>").text(json.phone));
+            table.append(tr);
+            
+            $("#orderSubm").append(table);   */
 		  })
 		})
   
@@ -47,19 +72,20 @@
 <br/>
 <br/>
 <br/>
-<br/>
+<p id="b1"></p>
+
 <div id="#">
-<table class="table table-bordered">
+<table class="table table-bordered" id="myTable">
     <!-- On rows -->
-    <tr class="active">
-        <td class="active">订单号</td>
-        <td class="success">用户名</td>
-        <td class="warning">商品信息</td>
-        <td class="danger">收货地址</td>
-        <td class="info">联系电话</td>
+    <tr class="active" id="row_1">
+        <td class="active" id="orderNum">订单号</td>
+        <td class="success" id="uName">用户名</td>
+        <td class="warning" id="orderInfo">商品信息</td>
+        <td class="danger" id="address">收货地址</td>
+        <td class="info" id="phoneNum">联系电话</td>
     </tr>
     <tr class="success">
-        <td class="active"><div id="b1">col1</div></td>
+        <td class="active">col1</td>
         <td class="success">col2</td>
         <td class="warning">col3</td>
         <td class="danger">col4</td>
@@ -89,6 +115,14 @@
 
 
 </table></div>
+  
+   <div id="test">
+                                
+         
+                                    
+   </div>
+   
+   <div id="orderSubm"></div>
   
 </body>
 

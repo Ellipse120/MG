@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.jms.Connection;
+import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
@@ -96,6 +97,23 @@ public class OrderMgrController {
 						out.close();
 					} catch (Exception e) {
 						e.printStackTrace();
+					}finally{
+						if(sen!=null){
+							try {
+								sen.close();
+							} catch (JMSException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						if(conn!=null){
+							try {
+								conn.close();
+							} catch (JMSException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
 					}
 					
 			}

@@ -2,21 +2,21 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Seller KFC</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seller KFC</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
 
-    <script src="js/jquery-1.11.1.min.js">
+<script src="js/jquery-1.11.1.min.js">
     </script>
-    
-    
-    
-   
-    
-    <script type="text/javascript">
+
+
+
+
+
+<script type="text/javascript">
         $(document).ready(function () {
             $("#btn1").click(function () {
                 //var str = $('#b1').load('orderShow').text();
@@ -34,27 +34,25 @@
                     for(var i=0;i<json.length;i++){
                     var table = document.getElementById("myTable");
                     var row = table.insertRow(-1);
-                    
-                   
-                    	
-                    	var cell_orderNum = row.insertCell(-1);
-                        cell_orderNum.className = className[rand % 5];
-                        cell_orderNum.innerHTML = json[i].orderNum;
-                        var cell_uName = row.insertCell(-1);
-                        cell_uName.className = className[rand % 5];
-                        cell_uName.innerHTML = json[i].uName;
-                        var cell_orderInfo = row.insertCell(-1);
-                        cell_orderInfo.className = className[rand % 5];
-                        cell_orderInfo.innerHTML = json[i].orderInfo;
-                        var cell_address = row.insertCell(-1);
-                        cell_address.className = className[rand % 5];
-                        cell_address.innerHTML = json[i].address;
-                        var cell_phoneNum = row.insertCell(-1);
-                        cell_phoneNum.className = className[rand % 5];
-                        cell_phoneNum.innerHTML = json[i].phone;
+      	
+                    var cell_orderNum = row.insertCell(-1);
+                    cell_orderNum.className = className[rand % 5];
+                    cell_orderNum.innerHTML = json[i].orderNum;
+                    var cell_uName = row.insertCell(-1);
+                    cell_uName.className = className[rand % 5];
+                    cell_uName.innerHTML = json[i].uName;
+                    var cell_orderInfo = row.insertCell(-1);
+                    cell_orderInfo.className = className[rand % 5];
+                    cell_orderInfo.innerHTML = json[i].orderInfo;
+                    var cell_address = row.insertCell(-1);
+                    cell_address.className = className[rand % 5];
+                    cell_address.innerHTML = json[i].address;
+                    var cell_phoneNum = row.insertCell(-1);
+                    cell_phoneNum.className = className[rand % 5];
+                    cell_phoneNum.innerHTML = json[i].phone;
                     }
                     
-
+                    console.log('%cGroup10 NJU 路赛', 'background-image:-webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );color:transparent;-webkit-background-clip: text;font-size:5em;');
 
 
                 });
@@ -75,64 +73,64 @@
         })
     </script>
 
-	 <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function() {
 	   $("#Pagination").pagination("5");
         });
     </script>
-		
+
 
 </head>
 
 <body>
 
-    <button type="button" id="btn1" class="btn btn--inverse">刷新订单</button>
+	<button type="button" id="btn1" class="btn btn--inverse">刷新订单</button>
 
-    <button type="button" class="btn btn-primary">管理商品</button>
+	<button type="button" class="btn btn-primary">管理商品</button>
 
-    <button type="button" class="btn btn-success">管理订单</button>
+	<button type="button" class="btn btn-success">管理订单</button>
 
-    <button type="button" class="btn btn-info">销售记录</button>
+	<button type="button" class="btn btn-info">销售记录</button>
 
-    <button type="button" class="btn btn-warning">买家评价</button>
+	<button type="button" class="btn btn-warning">买家评价</button>
 
-    <button type="button" class="btn btn-danger">帮助中心</button>
+	<button type="button" class="btn btn-danger">帮助中心</button>
 
-    <button type="button" class="btn btn-link">买家咨询</button>
+	<button type="button" class="btn btn-link">买家咨询</button>
 
-    <button type="button" class="btn btn-link">安全退出</button>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <p id="b1"></p>
+	<button type="button" class="btn btn-link">安全退出</button>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<p id="b1"></p>
 
-    <div id="#">
-        <table class="table table-bordered" id="myTable">
-            <!-- On rows -->
-            <tr class="active" id="row_1">
-                <td class="active" id="orderNum">订单号</td>
-                <td class="success" id="uName">用户名</td>
-                <td class="warning" id="orderInfo">商品信息</td>
-                <td class="danger" id="address">收货地址</td>
-                <td class="info" id="phoneNum">联系电话</td>
-            </tr>
+	<div id="#">
+		<table class="table table-bordered" id="myTable">
+			<!-- On rows -->
+			<tr class="active" id="row_1">
+				<td class="active" id="orderNum">订单号</td>
+				<td class="success" id="uName">用户名</td>
+				<td class="warning" id="orderInfo">商品信息</td>
+				<td class="danger" id="address">收货地址</td>
+				<td class="info" id="phoneNum">联系电话</td>
+			</tr>
 
-        </table>
-         <div class="pages">
-            <div id="Pagination"></div>
-                <div class="searchPage">
-                    <span class="page-sum">共<strong class="allPage">1</strong>页</span>
-                    <span class="page-go">跳转<input type="text">页</span>
-                    <a href="javascript:;" class="page-btn">GO</a>
-                </div>
-        </div>
-        
-    </div>
-   
-  
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		</table>
+		<div class="pages">
+			<div id="Pagination"></div>
+			<div class="searchPage">
+				<span class="page-sum">共<strong class="allPage">1</strong>页
+				</span> <span class="page-go">跳转<input type="text">页
+				</span> <a href="javascript:;" class="page-btn">GO</a>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.pagination.js"></script>
 </body>
 
